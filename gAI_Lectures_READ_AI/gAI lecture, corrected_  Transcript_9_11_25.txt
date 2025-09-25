@@ -1,0 +1,341 @@
+gAI lecture, corrected. 
+Thu, Sep 11, 2025
+
+0:14 - Conference Room (Hong Qin) - Speaker 1
+Okay, so a lot of you use something called Read.AI meeting notes. I never use it. So many people use it. I guess it's useful. Okay. Please sign in if you have not. Let's wait a bit for our all the students to sign in. Some people use alter.ai. We have all kinds of AI note taking. It should be more than five students. Oh, yeah, there's also a lot of AI note takers, so it's really hard for me to count which is a real person, which is not. Yeah, we have quite a few AI note takers here in the Zoom meetings. So I really don't know. I guess only six real persons. Is it? One, two, three, four, five, six. Six, seven, eight, I counted nine, I counted nine. So I'm going to wait until nine students sign in for that. Okay, I counted nine actually persons, so please sign in if you have not, or maybe not. One, two, three, four, five, six, seven, eight, nine. Yeah, I count nine. So please sign in if you have not. And this, not a lot, it's 5% of your grade. So if you are between A or A-minus, this probably really helps. Okay, I'm going to move on. If you haven't signed in, you probably should. Okay, describe, this is just a review. So last lecture, we go over variational autoencoder. I'm not using this part for your grade, it's just participation. To see how much you returned, how much the lecture you actually, what's the word, returned in your understanding, I guess, yeah. Okay, let's see. It's mapping input of probability distribution, so now... We can generate content based on the probability. In a way, that's not encoded data, probably a latent space, and then we construct. This is more like, seems to be more closer to what we saw in this one, encoded, decoded. Yeah, that's true, but although this can be quite general. You can say transformer is probably also like this. Okay. Time-generated model, generated data, although similar to one another. General data type, auto-encoder, special type of auto-encoder to map data. Yeah, this is, yeah, this is very close, I guess. Yeah. Although it didn't, well, this actually almost like auto-encoded. It didn't say variational, though. It's close, but it seemed to missing the variational. This seemed to be a definition of autoencoder though, not a variational autoencoder. The last one is very close, except it seemed to be just autoencoder, not a variational autoencoder. Which one actually? Yeah, in that case, this actually probably is similar. This one, at least, trying to explain the probability. So I guess if you really combine some of the answers, we'll get a more close, more correct one. Oh, it looks like we now have nine. So if the two other students haven't signed, you can sign. I'm going to... Yeah, so variational autoencoder, which of course is a special type of autoencoder, but you need to add that part. Okay. Just don't want to sign in for some reason. OK. 1, 2, 3, 4, 5, 6, 7, 8, 9. Oh, I see. One of the students maybe is just auditing. OK, anyhow. OK, so this is just true and false. In variational autoencoder, the encoder map data direct to a single latent vector without any randomness. True and false. Yeah, that's, wow, this is excellent. Yeah, basically, yeah, it is false because we actually have an auxiliary parameter draw and then introduce other randomness there. So, very good. This is great. Second one, the variance loss function includes both a reconstruction term and a regularization term, a KL divergence. Very good. Yeah, that's cool. The evidence lower bound is maximized to approximate the true log-likelihood of the data. Is that correct? Interesting. I guess this is a bit of a harder question. No, this is correct, yeah. The reparameterization trick is using VAE to allow gradient to flow through the sampling step during backpropagation. True or false? This is true. Yeah, apparently this doesn't show the latex very well. So anyhow, I think this is my last. Yeah, this is my last question. So, okay, very good. Generally, it seems like the knowledge is retained very well. So today we are going to move on to one of the, what's a very important work called generative advisory nets. So I'm going to share my, okay. How do I share this? Sorry, I'm trying to find the share button on my iPad. Okay, I found it, okay. Okay, it looks like this is interface. It's updated. Yes. So, this is two page. Okay, I'll flip it. Okay, good. This is now one page. So, the classical game paper was published in 2014. I think the archive. That's the archive. It's actually not used very often, but the classical paper still had a good principle there. So the basic idea of this general advisory nets, actually not nets, the original paper says nets. It basically has two parts. One is a discriminator. The other one is a generator. So discriminator is this D. The other one is the G. This one is D. And this one, discriminator uses input data X or fake data. It's going to generate a probability And X often comes from a real data set, but it can also come from a fake data set. Well, the fake data set is generated by the generator. And in this case, the generator don't actually... Oops, sorry. My palm touched something. I'm sorry. Okay. Sorry. This is really a problem with iPad. I need to somehow put my hand up. Sorry. The generator input cannot be the input data. So it's a random noise variable or just random variable. So we call it a Z to be different from the input data X. So that's the... The input data distribution will be P data and the generator had a distribution called PG. It's a little different. So now the idea of the GAN is to basically make the two distributions become similar to each other. Oh, sorry. I can't. How do I minimize this? Sorry, sorry. I tried to put my image away, but okay. Oh, yeah, it did. Okay, so basically, is the basic idea that the generator going to generate the synthetic sample and in such a high quality that discriminator cannot even tell from the P data. Basically, the discriminator going to have a random chance, which is, what is that, 0.5%. To actually call it a real or a fake. What it means is at the so-called equilibrium, if the generator cannot... The idea is the fake data cannot be more real than real data, right? So the fake data and the real data, if you mix them, they are the same, from the same thing, from the same distribution, and you build Basically, the discriminator basically has a 50-50 chance, equal chance to identify it. Basically, it's just a random guy, a toss of a coin. So basically, the fake data, the best chance is just 50%. That's the so-called equilibrium. The way this is, apparently this is called Minimax game. Honestly, I didn't grow up in this country, so I don't know how popular this Minimax game is. I never played it myself, so I don't know. It's called Minimax game. What it's trying to do is the generator trying to minimize this value function and the discriminator try to maximize this value function. So you have the discriminator maximize the value and the generator try to minimize it. Which means in the real so-called mathematical optimization procedure, it's really hard to do. But in computer science, you do it stepwise and train a model to do this. In mathematics, if you minimize-maximize, it's the same, you always have the equilibrium. But in computer science, we are actually not looking at the equilibrium. So even though it's framed in this way, but in reality, computer science just uses this as a framework to set up the system. So, okay, so now let's look at this value function in more detail. So the value function basically is the first term is, that's a real data. So that's a log d, this is basically the probability, right? So you had a real, that's a real data distribution, the probability of density, right? That's the first term. And you look at the second term. Second term is from actually that generator. And now this one is actually, the generator also become a density through the water, discriminator. So this term basically generate a fake data, a fake data. And that fake data go through the discriminator. Basically, this is the density of the fake data using the discriminator. But instead of looking at that fake data density, we actually want to minus that. The reason will be explained in the next page. Explain this 1 minus on that, we can think about this training as a binary classifier. And the loss function basically is the cross-entropy. It's basically cross-entropy loss. Now, since this is a binary, the real data set, we can say y is 1, and the fake one, y is a zero. Now, the cross-entropy is basically the p log density of y minus y and log one minus another one. That's the definition of cross-entropy. Now, so this is basically, yeah, that's the second part. And y equals zero is the second part there. And y equals one is the first part. And you can actually see, indeed, if y equals 1, also use 1 minus that, that term just disappears, right? So this definition is, in a way, just based on the cross-entropy with a 0 and a 1 label. So you can actually see, once Once we write that down, it's actually the definition of the equation 1. The next question is how did we come up with this the data value function. So it actually first started with the optimal, the so-called polynomial is optimal. I guess it's equilibrium, or the optimal training objective. So once you have the p data, once you have that definition, p data, which is relative to the p data plus the generative distribution. This is the generative distribution. This is the real thing. Once we have that value function, once we put this back into the value function, this is just put it back and then this is just a trick to make the denominators smaller, not really smaller, simpler. And then, yeah, this is all very simple algebraic arrangement. Once you put that as the M distribution, and that by definition is just KL divergence, This is just KL-divergent p data to the m. The second term is the KL-divergence of generator function to the m. But once you write the KL-divergence of that, and that by definition is actually another term, something called Jason-Shannon divergence. And if you put the whole thing together, it looks a bit intimidating. But in reality, it's just definitions. So apparently, the value function can finally be written down. It's just there's a constant adjustment plus this Jensen-Shannon divergence. That's how that apparently is the value function of the gain. So you start with this, and then you just convert it into this Jensen-Shannon divergence between the input data and the generator function. So in a way, just to make these two similar. So, basically trying to minimize the Jensen-Shannon divergence between the input and generator, between the two, two is x, right? And the generator is z, so distribution. So, and That's just a definition. KL, actually, we already put it there. That's just a definition of this. The training process of this is actually step-by-step. Mathematically, you can't really apply minimized maximal computation at the same time, and it's very challenging to do. So the first step is to maximize the discrimination. And the second step is to minimize the generator. Maximize the discriminator, basically use the full loss function or the value function. That's just the equation we just showed. But update, minimize the generator, Actually, remember that's the one. So the first part actually, because it is all fake data, the first part actually can be thrown away. And then we just kind of look at the second part. Now here's a tricky part. The second part actually is very hard to train. Apparently, there's something called managing gradient or gradient explosion, something like that. So we actually have to train alternative phone, it's this phone. There's actually a lot of numerical analysis that goes into why the top phone is hard to optimize, but the second form is actually much easier, is relatively easier to optimize. So, this is checkup. This is in practice. This was used. So even though that's the case, actually, there's actually a lot of new methods. This is the classical paper. Basically, train a discriminator to spot a real and fake rewording the correct one, and then train the generator to make a false more converging so that the discriminator cannot distinguish the fake one and the real one. This is actually an interesting idea. So although that's just the short of version. So although this is a good idea, but in reality, the initial version, this 2014 version, is actually very hard to stabilize in practice. So then there are a new, quickly there's a new method coming out. The new method is called so-called Wassersteiner. I actually don't know how to pronounce So it's called W-game. It's much easier. So I'll just call it W-game. This actually uses an entirely different distance. Instead of using probability, it's actually really using a distance. In fact, it's called a so-called earth-mover distance, something like that. And it's also not between 0 and 1. It's actually between from negative infinite to positive infinite. But then of course it's really hard to, numerically it's very hard to train if you have that a larger range. And then they actually come out with some trick, which is basically also a numerical trick. And that's basically this. Don't know how to pronounce it. Lipschitz. It looks like a German name, but I don't know how to pronounce it. It turned out that this one also is really hard to train, and what they did is they just clip it. I'm trying to say where is that. Oh, clipping, yeah, they just clip it, to clip it. So that actually doesn't work well, even though in principle this should work, but in reality this one also very hard to implement. And the most, nowadays the most popular method is actually actually this method, WGAN with gradient penalty. So the classical one is really hard to train. The classical one is really hard to train. And the WGAN is also really hard to train because of clipping. And here is the WGAN with gradient penalty. This is really the... Current state-of-the-art. Actually, I shouldn't say current state-of-the-art. They are also a new method. So what this WGAN with a gradient penalty, instead of clipping, it basically uses a soft constraint to penalize the deviation. So this actually uses a lot of theorem, some of the theorem are haven't Read into it. And I assume it's, I guess, I just assume it's correct. And that's the proof they come. What's interesting about this WGAN with the gradient penalties is also draw. So yeah, we have the real data and fake data, right? And then it's actually draw another parameter epsilon. I'm basically from a random point. There's a real data times epsilon, and then 1 minus epsilon times the real data. Remember, epsilon is between 0 and 1. This is just from a random between the real and the fake data. Because the epsilon basically is a percentage. Epsilon basically, oops, oh. You can basically think epsilon is a percentage. And if we say, or we draw a, it says, 65%. Whoops. 65%. And that means then we will draw between the real and the fake. Take the middle, but 15% more closer to the real. And then that's the synthetic X. Apparently, that's how we maximize that data. There, you see that's a point we use to construct the penalty and then the rest of it is still there. The rest of it is still there, but there we have the penalty term. So the penalty term. And there's a lambda parameter we choose to weight the penalty. Apparently that lambda can be 10, often choose a 10, which is really a bit. My understanding, that's an empirical, it's probably people do some experiment to see what lamina you can choose. And in reality, that's often called hyperparameter. We choose lambda as a 10. There are probably people trying to tune the hyperparameter, but apparently often just choose other 10. So this is, I'm gonna skip the training detail, but go back to the book with the code. The hyperparameter lambda often choose a 10, Y is 10. I'm pretty sure there's a lot of people who study that. So this W gain with a gradient penalty has a lot of advantages compared to the classical method. The classical method often leads to so-called collapse, but this new method apparently more stable. Of course, which means it has some other extra parameter you have to find out, which means there's extra complexity to it. The classical one uses a so-called Jensen-Shannon divergence. The WGAN used... There's actually no term for that, I guess. That's just it. Yeah, that's just it. I guess that's just a loss function. There's no special term for that. Anyhow, it's just the value function plus penalty. There's no special name for what it looks like, I put this note on the canvas as well. There's also extra math to explain some of the derivation but I'm going to skip it. Probably most of you don't even care about it. Okay, so now we go back to the textbook version. The textbook basically just presents the loss objective function as it is, but what the textbook does, which is also extremely valuable. They provide a code and an example to show how it works. Unfortunately, like in computer science, everything written in a textbook in a code is old code, but still a very good example. What this does, it actually has this good This clearly is also an AI-generated image, but the idea is... So what the example is trying to say is they have a company called Bricky. Oops, where is my highlight? I'm trying to find my highlight here. No, that's not my highlight. Okay, I don't know how to get a highlight out on this. I'm going to skip this for now. So there's a company called Bricky and it, of course, manufacture a lot of bricks, but apparently they are somehow in the process, there's a fake brick mixing into it. So then as the owner, you don't want the customer to buy fake bricks. And the customer doesn't like the fake brick, I guess. So you want to move the fake brick from your production line and then give the customer the real brick. But it turned out that once you do that, whoever does this, they produce better fake bricks, more look like yours. So you, in the end, you gave the customer brick, almost half of the real, half of the fake, and the customer also cannot tell anymore. Which, yeah, this is, that's the story. And then they tried to implement this, and this is actually quite, you know, it come out of stories, not that big deal, but it actually the author really spent time and effort to implement this story search. So the author actually have bricks, actually Lego bricks. They somehow get a lot of image of that bricks and that's the real data. And then they're going to generate some fake bricks data and use this to train the game. And this is also where you implement the deep convolutional neural network, which is very similar to the previous example, variational autoencoder. So this is also a Kaggle data set. We have to really appreciate also found an accessible data set and built this example. This author really spent time and effort trying to make a hands-on exercise for the game. That's really quite a dedicated... Okay, so This is just a loaded data set, but I guess you have to first download that from Kaggle. It is also possible to also already download that in the GitHub. This is download data preprocessing. Actually, maybe I should switch to my computer because on computer, I think I know how to highlight the text. Let me see whether I can highlight the text on my, somehow on my laptop, I cannot do it. I'm going to switch to my laptop so to the same place and then use my keyboard to highlight that. Oh I see once I switch it is two page on iPad. Unfortunately we have to deal with two pages. I'm going to switch back to my laptop. Here's a discriminator. This is basically a convolutional neural network, right? So it's basically, yeah, so convolution, the input is 64 by 64, almost like a minister data set. Convolution, convolution, job bot, flatten. Yeah, this is basically I mean, it's just a binary classification. Hold on, let's see. Joppa, Joppa, convolution 2D, activation sigmoid. It does give a probability, it looks like, Yeah, it does give a probability between zero and sigmoid. So the final one, the last convolutional layer is just one part of one. So it's followed by what, sigmoid, and then just output the probability. That's the discriminator. Basically, it's the classification, so give it a probability. And the generator, which is basically the same as a variational autoencoder. Yeah, that's interesting. So the variational autoencoder basically you have the latent space user and this one we just actually draw from random. So in a way, you probably can combine the variational autoencoder with again and have a better result. Anyhow, a bit of sidetrack. So this basically is the same as the variational autoencoder a variational decoder. So it's just generate for noise, generate image and let's see. So you had a render noise coming and then convolutional transpose, which basically putting zero and it goes up, expanded the image. Final image should be 64 by 64. Final image should be 64 by 64. 64 by, at the very end, is that the last layer? Yeah, the last layer, last convolution layer is 64 by 64. So it also said, the book also gave a different implementation of the generator. Instead of using convolutional transpose, there are other ways. Upsampling, instead of transpose putting zero, you can also do upsampling. Those are just different ways to expand the image. But technically, it doesn't look like the upsampling or convolution has different technical weakness or advantage. So that's some fine detail. If you are interested in image generation, of course, those fine detail matters. So here is the overview of the code. So we have a render noise. That should be one. 100 random noise point generator. Those are the trend discriminator. And then you have prediction probability. The label is all there because they're all fake, right? So on the discriminator, those are all real, also generate a probability. By the way, This is actually also very similar later on when we go back to the transformer language model. But at this point, we just treat all the image as a zero and one, fake image and zero. And then compute the loss function. Okay, so binary cross entropy, apparently that's just binary cross entropy. So that's just, go back to the classical definition. So compute the discriminant loss computer generator what's optimizer the optimizer must be specified elsewhere I didn't on this page. Result goes back to the top optima. Oh, that's the input. It looks like that's part of the model input. So it must be specified. Those who are really interested in what optimizer they use, maybe it's much easier to go to GitHub and look at the entire code all together. But page by page, it's really hard to see where that optimizer is. And here's the training step. So it does offer step-by-step common tool. Number one, the loss function on generator, binary and shopping. Yeah, so that's a binary cross-entropy. Number two, chain the network. First, branch it back to our multivariate standard. That's for the generator. As for generator, produce a batch of generated images. So we have the noise, generate image. Number three, that's the image. Okay pass this through the generator to produce the batch I generate okay as a discriminator predict the realness of the batch number four not a generated image random latent real the real image you discriminator are the real image prediction and generated image and those are the fake predictions. So after the discriminator it should be that's this one discriminator. So basically output probability. Okay, number five, batch generator. Number six, discriminant loss. Number seven, generator loss. Okay, here's the loss. Real loss or we get the label there label a real one is one and what's interesting they also add some noise here so that that this noise can remember this is this noise is come from where uh that's the wgen gp method with the epsilon there so this will be the epsilon and that's your that's you draw it from epsilon uniform but this one is 0.1 not 10 interesting this lambda chooses 0.1. So the real, the fake one also laminated 0.1. And the discriminant loss is a real cluster and then divided by two, normalized by two. And generator loss function definition is... Real and fake. Save the last function. Where is the last function? Definition, chance step. I don't see that loss function definition. Anyone found out where the definition of the loss function? Biotrim metric I didn't see the how that loss function is defined for the generator. It should be the second half of the... But if you use the GP, there should also be a penalty. The penalty should also be defined there. I want to see how it's penalty defined. Okay, I don't see that. This is just a training result. Oops, sorry. Yeah, so general image. Yeah, still pretty fake, I guess. But after training, kind of become more and more closer. Oh, those are still generally, that's, it actually found a closer to training example. They are still pretty different, isn't it? It's actually not even really close. I guess if you compare pixel to pixel, it's actually not bad, but human eyes really doesn't compare pixel to pixel. So those tiny a nudge on the Lego really make a difference for human eye. But if it's pixel by pixel, it's probably very good because this nudge is a very small part of it. So, unfortunately, for computer imaging, if you use pixel by pixel comparison, it basically compares the size. Like this one and this one. Looks, shape is really different, but if you pixel by pixel it actually looks similar. That loss function is actually similar. I don't do computer image a lot, but people who really do computer image, I'm sure they have a lot of tricks to compare different objects. So the book then actually go on to the Watson GP model explanation, which is interesting. They already use it. They already use that. But I guess they already use a lambda there. But I guess this is more explicit example example, try to use that. Actually, this doesn't have a gradient penalty. It does not have a gradient penalty. Then it actually added a gradient penalty. Really penalty loss is here, added here. So this is not about the brick example anymore. Actually, this is interesting. This is apparently they want to predict someone had the blonde hair or not. So, and this is interpolated image. So this is, I guess, when is this book published? Actually, I forgot, 2024 or something? I guess it's okay. Some people may say this is not a cultural sensitive nowadays. We just treat this as an image and code to use. Let's look at this gradient penalty definition. It first calculates the differences, interpolate it. Alpha, aha. It's actually called alpha. In the paper it's actually called epsilon. That's fine. And this author call it alpha. Sure, that's alpha. But I try to highlight, oh yeah, now I can highlight, yeah. So it's alpha. That's the penalty, okay. So we had a square root, Reduce sum, square root. This must be phi. Is that phi in the penalty? Hold on. Okay, so. So in a way, this is nice. I mean, the math symbol looks a bit intimidating, but that's how the penalty is calculated. So in a way, But code indeed is more intuitive. So if you go back and look at a mathematical formula, it does look like a bit intimidating. But in reality, that's how it's calculated. I'm looking at a compare the two forms. They first had to compute the gradient. Yeah, so it actually first computed the gradient. Yes, that's the gradient. And then square the gradient, square the gradient, sum it up, reduce sum it up, and then square root it. So that's the norm. It actually returns the average square distance between L2,1 and 1. Why not 1? Oh yeah, okay, now minus 1. So that's the gradient penalty definition. Implement it here. I'll definitely try. So, yeah, the training code is really just a few, like 20 lines, looks. Really simple. Although the principle behind it is really not that simple. But when it's actually, now it's all implementing a Python package, it's not many code you have to write. So that's the last function. That's the penalty. Then the loss function plus penalty. Number four, that should be the weight. How is that weight decided here? Number four. This is the generators loss. That's the discriminator. In this case, It's called critique loss. See, critique loss, this is a generator loss. Notice that penalty only apply to critique, not to the generator. The generator is still the same loss. So that penalty only apply to the critique. Are the discriminator in the classical sense. So, the W gain use the W loss, there's also a penalty. And in this case of one minus one for the, the label. I mean the classical is 1 and 0. This is just some numerical trick with a gradient penalty. I guess this does look more impressive than the classical one now. Even though it's still clearly a fake image but it's more, a bit, it's much better than the bricks now. So you can actually see why it used brick for the classical gain, but the W-gain with a gradient penalty clearly can work on much more complicated image now. So this is clearly a big step forward. Now it is quite impressive. And all of this happened just in a few years. Yeah, it's really impressive how big-neck the AI has been advancing in the recent years. Oops, sorry. I moved too fast. Oops. No, I moved too fast. I moved to the next. Yeah, I jumped too fast. Sorry. Yeah, it's really Yes, someone raised their hand.
+
+1:07:19 - Evan H. Mulloy
+The critic, can you explain the critic again in this case?
+
+1:07:30 - Conference Room (Hong Qin) - Speaker 1
+The critical loss here is It had the W gain loss plus this penalty. Okay. Yeah. Self-grading.
+
+1:07:54 - Unidentified Speaker
+Yeah.
+
+1:07:56 - Conference Room (Hong Qin) - Speaker 1
+Actually here, CGP grading. Penalty. They gave you a long variable name. So that's self-doubt gradient penalty definition. There, that's defined gradient penalty. Okay, thank you. That said, I still haven't found that optimizer which that optimizer is. If you look at the GitHub JupyterNode, it's probably much easier to just do a search optimizer, then you'll find it. But in the textbook, it is somewhere, but I don't know where it is. I do really appreciate the author put this example there. It's a workable example, with a real data set. So that's really, yeah, this author is really a good teacher to really put effort there. And then there's also, follow up, there's another simple, relatively simple improvement, but actually quite important, even though it's very simple. So it's something called conditional gain. This is because very often we have multiple labels, and this conditional gain principle is really not hard. All it does is just concatenate the label information to the input, and then for the generator and the critique. So from the algorithm perspective, it's really not much. Is just concatenation of the input. But apparently this really improves the performance quite a lot. So it's a simple trick, but it improves the performance. So you can see here, all it does is just concatenate the input. And apparently that really helps with the performance. This is part of the simple trick, but it affects the result quite quite a lot. And of course, once you add that, the dimension really changes, so the code really has to adapt to that. Apparently, now it actually also uses a one-hot label. Yeah, why not use a label encoding, but use a one-hot label? I don't know. You may want to try it with a different labeling method. We'll see how that works. One-hot encoding does have the advantage because you don't have to scale the labels. It's just zero and one. One-hot encoding does have the advantage. This condition again, does this actually improve it before the previous one? Maybe. Blonde and not blonde. Maybe from that perspective, it does improve it. So this is, I mean, it's really a lot to go through the entire gain, W-gain, W-gain, GP, and conditional gain a lot in one chapter. But apparently, if you look at the yield those papers are published, they are indeed very fast. So you have the classical gain 2014. I think that's a W gain, I guess, 2016. No, this is W gain 2017. W gain with a penalty. It must be this one then. That's also 2017. 17. It's also actually just a few miles away. And then you had a conditional gain. The conditional gain actually is a simple trick, so it's also 2014. It's just a few miles away. So conditional gains are easy to implement. But the W gain and W gain with penalty took a few years, took three years. But notice this paper actually published in 2015, and this is January 2017, so it's two years apart. Yeah, two years apart. Yes, that's right. Five, six, seven. Two years apart, W-gain came out. W-gain does have some theoretical improvement, but conditional gain is just a simple trick. But that said, general advisory neural network on the whole, also, my understanding is also not one of the key methods. There's a lot of other methods. You have to see in this one, the critic and the generator, trained together. But nowadays, especially in large language model, you cannot do that. Basically, the large language model is pre-trained, and then the critique of another model or human is all done post-ad hoc, post-hoc. So nowadays, there's many other ways to do this general adversary net. I guess you don't call that again anymore. And the human, we call that reinforcement learning with human feedback, something. R-L-H-F. So there. And we can also fix the critics. In fact, there is quite a lot. I actually did a survey on that. But didn't get into it. In fact, even though one of the also popular methods is called the teacher-student method. I mean, that's probably popularized by the deep-seek, which probably used just Chai-CPT as the teacher reinforcement learning to get deep-seek to accelerate the trend. Yeah, I mean, of course, again, in 2014, it is a very important milestone is really with. Actually, nowadays, with the agentic AI, this whole paradigm really shift become the so called agenda. You can have, you can have a one agent call just call proposal, proposer, you have another just call it a critique. In fact, you can have multiple. You can have a pathologist. You can have internal medicine. You can have other specialists. And then you can have an AI model to produce those patient simulator data. And then you have all those specialized expert as a critique to evaluate the synthetic patient data. So this is really, with agentic AI, this whole field is just exploded. Although, I mean, given how nascent that agentic AI is, probably a lot of work has not even been published on that field. This whole I think it's really changed quite a breakneck. I mean, this is quite impressive in 2014, 2017, but this is now 2025. Gee, more than 10 years. This is more than 10 years. So I guess in the AI field, this is really the dinosaur technology now. Sorry. I shouldn't say that, but in AI, 10 years is a long time. So yeah. So even W gamut penalty, that's still 80 years ago. It's still a long time ago. So yeah, this is quite a lot. So, okay. So I'm going to stop sharing on this. Obviously there's quite a lot. So I actually just met the ODU GCP person, John, I forgot his name, John Pratt. Basically, we have a request, Google Cloud Platform and Vertigo AI account for all the students registered for this class. And I think I also assigned a GCP data camp assignment to everyone. Let's say I'm not sure how the datacam GCP training, how that is aligned with the ODU Vertex AI environment. So that part of the ODU Vertex AI seems to be in the early stage. There's a lot of nuances probably need to be ironed out. But by using that Basically, everyone of you will be the so-called beta tester or first adopter. I mean, whatever you want to put on your CV. So put that highlighter there. You will be the beta tester of the Verdex AI at ODU. So let's see. I guess the goal is that the more people use it.
+
+1:18:45 - Unidentified Speaker
+Oh, here.
+
+1:18:46 - Conference Room (Hong Qin) - Speaker 2
+Someone raised their hand. Yeah. Introduction to GCP course and it's basically, I think, entirely knowledge checks about the GCP. It's not very, it doesn't show you practically how to use Vertex AI or anything. I just want to make sure you're aware of that. Thank you. I haven't looked at it.
+
+1:19:11 - Conference Room (Hong Qin) - Speaker 1
+Honestly, the Vertex AI is a very new thing. I don't So in a way, yeah. So that, okay, thank you for verifying this. So do you feel that the GCP basic concept is still helpful or not at all? Yes, I do.
+
+1:19:29 - Conference Room (Hong Qin) - Speaker 2
+I do.
+
+1:19:30 - Conference Room (Hong Qin) - Speaker 1
+I learned things. So is it helpful? Okay, that's good. Thank you. I guess it's still helpful in a way, at least, yes. Hamza? Hamza? Yeah.
+
+1:19:41 - Hamza Chao
+Professor, yeah, I just want to, like, I just want to understand more about Vertex AI.
+
+1:19:49 - Hamza Chao
+Is it like a platform to train models?
+
+1:19:53 - Conference Room (Hong Qin) - Speaker 1
+Well, if you really look at Google's Vertex AI commercial promotion, you'll do everything. It's actually trying to promote an enterprise platform for people to so-called fast develop AI tools, something like that. Uh, yeah, is it like faster than the, um, what have audio?
+
+1:20:18 - Hamza Chao
+Um, I'm sorry. Say it again.
+
+1:20:21 - Conference Room (Hong Qin) - Speaker 1
+I'm sorry. I missed the question.
+
+1:20:23 - Hamza Chao
+Uh, is it faster than the, uh, ODU, uh, super computer, the cluster? Do you think it might, it will be faster than that? Is it the faster?
+
+1:20:36 - Conference Room (Hong Qin) - Speaker 1
+Ah, that's probably not. Of the right comparison. Because what happened, what I got there, they are focusing on different things, right? So the, what happened, what happened, the GPU is A100 something?
+
+1:20:53 - Unidentified Speaker
+Yeah, it's A100.
+
+1:20:54 - Conference Room (Hong Qin) - Speaker 1
+Yeah, yeah. What I got there, in theory, you could request different GPU. And besides, what I should say is, it is a Google platform, From the commercial, it has a lot of so-called industrial-level AI tools, APIs. For example, Google has so-called AlphaFold. It actually has other things called AlphaGenome now. I forgot something. They also have notebook, I want to say that, although I could completely miss misspelled his name. So basically, Google, I mean, it's Google, right? So you had a lot of beauty in AI. Hopefully, Gemini is also there. It has those tools are there, but on the Wahab, you won't be able to access that easily. Is it more like Google Cloud? I used it. Mine is also not entirely Google Cloud. It is Vertex AI with the so-called Colab Enterprise. But that Colab is also a little different from a public Google cool app if you want to use. So it's really a new beast. I'm also new to it, so I don't think I gave you a good introduction. But the ODU does partner with Google. They offer training. I think I put a, hold on, let me, did I put on Canvas training, I thought I put that announcement there. So let me double check. Let me look at the announcement I put. Oh yeah, I did. Let me share my screen. I did put it there. Yeah, so, so, yeah, so, so apparently the, The ODU organized some GCP training. Let me see. Vertex AI. Oh, one is already passed. I'm sorry. September 9th. How do people register for this? Oh, yeah. Registration. Sorry. September 9th. It's already passed. Sorry. Yeah, you can register for that. I'm going to register myself. Department? Oh, yes, Evan. Professor, are there any special steps we need to take in order to register?
+
+1:24:17 - Evan H. Mulloy
+register to use GCP?
+
+1:24:20 - Conference Room (Hong Qin) - Speaker 1
+I have to wait for the, for the, the, the ODU. I forgot that. John? Yeah, not John. HPC? HPC. Not really. I don't know. The GCP seem to be a separate from I don't know. Terry, can you chip in and say something about this?
+
+1:24:50 - Terry R. Stilwell
+Yeah, I can give a lot of context there. So we've, yeah, I work in the HPC. We do a lot of stuff too, but the project is ready to go. I can provide a link to our wiki on how to connect and how to use Vertex AI if you guys want.
+
+1:25:10 - Conference Room (Hong Qin) - Speaker 1
+I just don't know if that's what the professor wants immediately. Sure. OK, next week. Wait, are the students ready to use the Vertex AI now? Yes, sir. Is it possible you can show them how to use it? Sure, I can do that today, next week, whenever.
+
+1:25:32 - Unidentified Speaker
+Yeah, can you do it?
+
+1:25:34 - Conference Room (Hong Qin) - Speaker 1
+Are you ready to do it today? Yeah, let me. Sure, we can take a break. Let you prepare and then give a brief time to student how to do that. Yeah. Okay. Okay, everyone, let's take a five minute break. Let Terry prepare a little bit. Is five minutes enough, Terry? Yeah, that's plenty of time. Okay, very good.
+
+1:26:03 - Unidentified Speaker
+Yeah. All right. Thank you, Terry.
+
+1:26:25 - Conference Room (Hong Qin) - Speaker 1
+Five minutes. Oh, by the way, there are still two students missing in that online sign-in. I actually counted 10 students now. One, two, three, four, 5, 6, 7, 8, 9, 10. I have become 10 students now, but only 9 even online. Oh, you need to put down the Socratic.
+
+1:31:23 - Anton Rasmussen
+You didn't sign Yeah, I should have signed in, but I'm just answering Terry's comment.
+
+1:31:32 - Conference Room (Hong Qin) - Speaker 1
+Oh, I see, I see, I see, I see. Oh, I see. Sorry. Terry asked you to put your email there. Sorry. OK, I didn't see that. OK.
+
+1:31:45 - Anton Rasmussen
+Yeah, because I think on Zoom, I'm signed in with my non-student account. I see, I see, I see.
+
+1:31:53 - Conference Room (Hong Qin) - Speaker 1
+OK. Okay, oh good, we actually have a wiki page how to use this now. We probably should put this on the canvas somewhere. Terry, can you write a bit of document or something I posted on the canvas? Yeah, I can export.
+
+1:32:24 - Unidentified Speaker
+that as a
+
+1:32:33 - Unidentified Speaker
+Very nice.
+
+1:32:38 - Conference Room (Hong Qin) - Speaker 1
+This is so new I haven't used very much myself. Actually, some of you I know are very familiar with the Google Cloud GCP. Yes, actually, we published it. If some of you are interested, we may give some small tutorial on how to use some Google Cloud. I mean, I can't give you an extra bonus, point is. Okay, Terry, are you ready? Yes, sir. All right. Excuse me. So is this is that the attendance? I arrived a little bit late.
+
+1:33:38 - Hamza Chao
+Oh, yeah. Yeah, that's attended.
+
+1:33:41 - Unidentified Speaker
+You need to sign in on the Socratic.
+
+1:33:47 - Hamza Chao
+Is the data camp I just know that's not a data camp.
+
+1:33:54 - Conference Room (Hong Qin) - Speaker 1
+That's a Socratic. Okay. Oh, yeah. Yeah, as a Socratic science. Okay, thank you so much. Yeah, this this Socratic sign actually that. Yeah. Yeah, apparently, if you are the one who have Actually, there are two students that haven't signed yet. I don't know who that is. Okay, so Terry, can you share your screen? Maybe you should share your screen.
+
+1:34:30 - Terry R. Stilwell
+Yeah, so I'll share this link and kind of convert it to a PDF so we can upload it to Canvas.
+
+1:34:42 - Conference Room (Hong Qin) - Speaker 1
+Am I showing the right screen?
+
+1:34:45 - Conference Room (Hong Qin) - Speaker 1
+Do you guys see the Yeah, we see the wiki. Great, OK, so for like,
+
+1:34:53 - Terry R. Stilwell
+Professor Chin said we as a group are. Getting more comfortable with GCP, but we also want to offer it as a service just for some context. You know there's a question about Cloud or Vertex AI. Just a real quick summary there. When you need infrastructure or resources for these problems, like in Gen AI or machine learning, typically you need some GPUs and storage and nodes for this. In the data center at ODU, we have clusters. One is Swab, one is Turing. That lets you submit batch jobs. You can also go to a service called OnDemand. It's like a web portal. You can stand up Jupyter Notebooks and then run interactive jobs with Python. That works great. You can run your own TensorFlow. You can run your own PyTorch code there. Alternatively, let's say five years from now, we've run out of money. This is like a worst-case scenario. Those hardware resources on-prem go out of maintenance and hardware starts dying, we need, let's say, a second option. So another option, as an example, is a cloud resource. And that could be Google Cloud. So Google Cloud, it's just the umbrella term for one of the cloud vendors. And then within that, you have a service called Vertex AI. I haven't taken the Data Camp GCP course, but I imagine it'll talk about maybe some, like, what's an instance, what's a VM, what's storage, what Vertex AI does for you. It's a managed service, so you don't have to worry a whole lot about what's going on underneath the covers. So their sales pitch for Vertex AI, it's kind of their one-stop shop for traditional machine learning model development, training, deployment, and then also developing AI applications. So that's a mouthful, quick overview. So to jump in, the wiki article, this just talks about Vertex AI. If you guys can't log in, let me know. But if you just click on this link here, this will automatically drop you into the Google Cloud console. You can also Google in a browser tab, Google Cloud, and you can log in that way too. But two quick things just to get started, please make sure that you're logged into your student account, your student account at ODU. Otherwise, you won't be able to have any permissions in this project, what Google calls a project. So once you verify that, we've already created your permissions inside of Google Cloud. The second thing to check is this box in the top left corner. This is your Google project. If you don't more than one, that's perfectly fine. But just make sure you can at least see the project for this class. So if you've done that, you're good to go. And this automatically takes you to the Vertex AI service. If you're interested, there's this top down, sorry, in the top left corner, there's this hamburger menu. You can explore these other services another time. But this is Vertex AI. So what is it? Within this one service, they have a lot of options here on the left-hand menu. I don't know if you guys want to walk through each of these, but at a high level, the Model Garden, I don't know if you guys have used Hugging Face, but it's basically a place where you can look up and use Google models. They have open source models you can leverage. You can even upload your own models, I think, a model garden. But if you want to use a pre-trained model, you can look for it here and then use it in your application. Vertex AI Studio, I actually don't know what this is.
+
+1:39:08 - Unidentified Speaker
+I think it's like a chatbot.
+
+1:39:11 - Terry R. Stilwell
+So feel free to mess around with that. Maybe that's kind of like ChatGPT, in a way. Deploy, test, and develop advanced multimedia AI. OK.
+
+1:39:22 - Unidentified Speaker
+It seems like you're interacting with Jim and I there.
+
+1:39:28 - Unidentified Speaker
+Sorry, wrong.
+
+1:39:29 - Terry R. Stilwell
+If you go back to Vertex Tuning. Yeah, so with Vertex AI, so I made a point earlier, on the cluster, on prem, and within Google Cloud, you have the options to manually build, deploy, test, evaluate, You can do all that with your own Python code if you wanted to. If you go down to notebooks, Colab Enterprise, that's very similar to Colab if you ever used it. Workbench is basically Jupyter Notebooks, so you can stand up your own environments there and then do everything you already know how to do. But these top services here, these I think are managed services, so they have Cutoffs for, I guess, trying to automatically fine tune a model, if I had to guess. Agent builder, I think this is more on the generative AI side of the house. And then model development, I think this is more traditional machine learning. And then this is probably getting into deployment. So once you have a model, you How do you actually use it and leverage it in an application? You can deploy a model to an endpoint, which is basically just an API, and then you can start.
+
+1:40:58 - Unidentified Speaker
+Maybe it's inference or.
+
+1:41:00 - Terry R. Stilwell
+Something else, but I think that's that's it.
+
+1:41:04 - Unidentified Speaker
+Someone raise their hand.
+
+1:41:06 - Hamza Chao
+Yes, so yeah, Terry. So can we like right now? Create a project and use Vertex AI? Because when I wanted to, it asked me about organization and verifying the need.
+
+1:41:20 - Terry R. Stilwell
+No, you don't have to. So we've created one project for everyone in the course to share. So as long as you can see that Instruct CS 795 project, you're good to go.
+
+1:41:35 - Unidentified Speaker
+Does that answer your question?
+
+1:41:39 - Terry R. Stilwell
+Yes, let me just see if I can find.
+
+1:41:42 - Anton Rasmussen
+So to me, the obvious implication with that then Terry is that whatever we create under this course is going to be viewable and usable and editable by everybody else, correct? That's something correct, so something to keep in mind.
+
+1:41:59 - Terry R. Stilwell
+It's a very good point. What we don't want to happen is if, let's say we have one with three students. They spend three months on their semester project and then someone from another project group goes in and deletes something accidentally. We don't want that to happen right now because it is a shared project. That is a possibility. So what we've done to try to counteract that is from the storage side. There's another service It's for storage. You can use a bucket, essentially. This is outlined in the Wiki article as well. But basically, let me show you that really quickly. If you go to Cloud Storage from the top left menu, and then click on Buckets here on the left-hand side, each student has their own Google bucket. And I'm logged in as. T still will currently. Everyone has their own. I have full permissions to this bucket. So I can create objects. I can delete objects. Just to show you an example here. Create. There we go.
+
+1:43:18 - Unidentified Speaker
+You can upload objects too.
+
+1:43:20 - Terry R. Stilwell
+If I go back to the project, sorry, the buckets listing. If I try to go to Anton's bucket, I don't have permission to Read write, or edit anything. And then the second thing we have is a shared bucket. So maybe we do this by projects, I'm not really sure yet. But this default one, anybody in the class can write to it, they can Read it, but there's no deleting allowed. So while that fixes, that addresses part of Anton's question about storage, all of the vertex AI services, there's a chance that that storage, let's say you spin up a Colab instance. We highly recommend copying any long-term data that you need to this bucket. But there's still the possibility of someone in Vertex deleting a notebook. So maybe copy your Python code to Git or something. We're still working out. Um so I'm sorry can we use api like google cloud like on now to work on uh like a rag application or any other ai yeah yeah so they have a vector search rag engine so you can feed it um your own knowledge bases and if you I'm not sure how exactly This is going to depend on your application, how you.
+
+1:44:58 - Hamza Chao
+Yeah, can we use like a Gemini API? Does it come with the Vertex AI or?
+
+1:45:05 - Terry R. Stilwell
+Yeah, you can use Gemini with Vertex. And then you can pair Raji with that, and then expose that as an endpoint. But that's a very big simplification. Yeah.
+
+1:45:22 - Unidentified Speaker
+Question, could we just make our own projects?
+
+1:45:25 - Evan H. Mulloy
+You are more than welcome.
+
+1:45:28 - Terry R. Stilwell
+The advantage here is that ODU pays for it. So there's also, I mean, yeah, you can make your own project and you can invite people there. But just understand if you're doing some heavy work, if you're doing a lot of workloads, it might cost something.
+
+1:45:50 - Unidentified Speaker
+OK, thanks.
+
+1:45:51 - Terry R. Stilwell
+And really, I should defer to the professor there, if what he wants us to do.
+
+1:45:56 - Conference Room (Hong Qin) - Speaker 1
+But what's the I mean, the key is, if you do everything minus and you do everything in the install CS75, it's free for you. If you want to use GCP outside of this, you might have to pay for this, I guess. That's the key. Yeah, that's what I was going to ask.
+
+1:46:17 - Unidentified Speaker
+limits of using the protocol on chain?
+
+1:46:20 - Hamza Chao
+Yeah, that's a really good question.
+
+1:46:23 - Terry R. Stilwell
+So we have alerts if the money gets out of control, but don't worry about money. We're good to go. Now, on the same side, don't spin up an instance with four H100s and have it sit idle for three days. That's a huge waste of money. Try to be a good sponsor.
+
+1:46:47 - Hamza Chao
+Yeah, but is there like any way to track like how much money you're spending or?
+
+1:46:53 - Unidentified Speaker
+Yeah, you can.
+
+1:46:55 - Terry R. Stilwell
+We have to enable that API for us, but we're tracking that on the back end, so we don't want.
+
+1:47:03 - Unidentified Speaker
+We don't want students worrying about cost.
+
+1:47:05 - Conference Room (Hong Qin) - Speaker 1
+OK, OK, thank you. So it is that it's not easy to get hand on the There's a fancy to you, and here's the opportunity. Yeah, so. Sorry, Professor. Last point.
+
+1:47:19 - Terry R. Stilwell
+Anton brings up a really good point, though. Just to give you an example, I don't know. Let me jump into Colab Enterprise here. I've already created a notebook here. So here, you just write some Python code. That's fine. But if you guys are also, I'm not so this whole multi user in a single project we need to flush out. So just be careful if you guys see someone else's notebook, don't delete it. Again, just be responsible, but maybe in the future we might have to change permissions to be less open. That just makes it a more frustrating experience at the same time, but maybe we have to do that.
+
+1:48:05 - Unidentified Speaker
+Yeah, Terry, that's a
+
+1:48:07 - Anton Rasmussen
+It's a great point and I would this is an opportunity to practice creating things on your local and then having an actual automated process to deploy it to your bucket or something like that so that you always maintain a copy of it because there is a risk here. But I would imagine, yeah, in the future where there would be like sandboxes for each student or something to that effect where like it would be like everything would be tied to the student. But yeah, to me, this is like it just makes me want to whatever I'm going to create in here, I want to make sure I have a local copy of it. So if it inadvertently gets deleted, it's not too hard to put it back.
+
+1:48:49 - Terry R. Stilwell
+That's a major concern. These projects, we can create them pretty quickly. So maybe a month from now, I don't know, we can use this project as a learning thing, and then we end up creating class project GCP projects, if that makes sense, and then only the people project have access to it. So we can change things. It's flexible. And oh, there's one more thing. If you guys, oh, if there's any power users, you guys don't like the GUI, you've got the Cloud Shell here. You're able to authenticate from your local machine into GCP2. So you can have a terminal here, and I can authenticate into GCP and call GCP APIs from here, too. So there's a lot of flexibility. However you want to use it, please use it. And also, our documentation is going to be a work in progress. So if you guys have questions or feedback, please let us know.
+
+1:49:56 - Hamza Chao
+Just want to ask, is there a limit about the storage? Big data sets? Is there any? It depends.
+
+1:50:05 - Terry R. Stilwell
+So we don't have any quotas set on the buckets. But Google also has data sets built into the platform. So if you want to leverage a data set that's already in Google, go for it. But yeah, don't put any personal data. Don't download movies or do any big like nothing, nothing crazy like that, but we're not. You can. You have unlimited storage in your bucket.
+
+1:50:37 - Terry R. Stilwell
+Essentially, just be responsible.
+
+1:50:38 - Unidentified Speaker
+Yeah, just quick quick.
+
+1:50:40 - Anton Rasmussen
+Maybe feedback or question Terry. I know like it's not work. We use Google Cloud, so I'm super familiar with this stuff. One thing that has been super helpful for for us is having like CI CD through GitHub. So like anything that gets deployed, like even resources get provision via Terraform through Google Cloud, or I mean through GitHub Actions and all of that stuff. I'm just wondering if you, you know, if that's part of the plan is to have actually like a one-to-one relationship with the Google project and maybe like a GitHub repo. So that way people, whenever you're adding things, you can actually track changes and you can see, you know, you could see those commits change over time.
+
+1:51:22 - Terry R. Stilwell
+Yeah, that's a great question. So what we actually do is we are creating the projects and setting up permissions and user access all through infrastructure as code currently. If this was more of an enterprise project, we absolutely would have everything version controlled, approved through Git, and then deployed through, we use a combination of Terraform and Pulumi. However, because it's like a classroom environment and people are learning If we did it that way, we would slow everyone down like if they just wanted to learn one of these services. Having that step right now I think would be an unnecessary learning curve. Yeah, agreed for sure. Yeah, that's a whole other class in itself. So yeah, yeah, but that's a good point. We're we're trying to start from from the enterprise side. If I put my workout on where we're trying to keep everything in code here.
+
+1:52:18 - Conference Room (Hong Qin) - Speaker 1
+OK, so the Quick question, whenever this course ends, the semester ends, do we lose the bucket and project? That's a great question.
+
+1:52:27 - Terry R. Stilwell
+We haven't, I don't know, but I would plan on that being yes. Yeah, so just in case, save everything before semester ends. Right, and if you need, like if you're going to be at ODU for a while and you want to use this stuff in another research project to and we can talk about that.
+
+1:52:50 - Unidentified Speaker
+But plan on everything being deleted at the end of the semester. OK. Aditya?
+
+1:52:58 - Conference Room (Hong Qin) - Speaker 1
+Yeah, I don't know.
+
+1:53:00 - Aditya C. Doppalapudi
+For this course, we are going to be exclusively only using Google Cloud Vertex AI or HPC also? That's offered by Odeo.
+
+1:53:12 - Unidentified Speaker
+Yeah, I'll defer to the professor.
+
+1:53:15 - Aditya C. Doppalapudi
+Sorry, what's your question?
+
+1:53:17 - Aditya C. Doppalapudi
+I was wondering, are we mainly primarily going to start learning to use vertex AI only for the course or are we also going to learn to use HPC?
+
+1:53:31 - Conference Room (Hong Qin) - Speaker 1
+Well, the course is about generative AI. Yeah. So. So I was just asking. Right. I mean, if you if you just use what have HPC, of those is just classical computing. Oh, okay. Yeah, I see. Right. I mean, it depends on what project you are, whatever project, it should be aligned with the generality by this course. I mean, what have I had the only advantage I use what I have a lot, but it is a different purposes. Yeah, okay. That was my question. Yeah, I mean, depend on the, I might not say you shouldn't use Warhammer, but it depends on the project. It does have different purposes. Okay. This is great. I am so glad or lucky to have Terry and Anton in this class. They actually are extremely knowledgeable about the GCP and what I say. Okay. I don't have other things. Yeah, we may have to come up with some exercise, how to use Vertex AI or build some agent. But unfortunately, I'm not familiar with Vertex AI myself. We may have to come up with a discussion, how do we better use this resource. Okay, I think it's good to call it a day now. Okay everyone, have a good night. I'll see you next class.
+
+1:55:23 - Conference Room (Hong Qin) - Speaker 1
+Professor, one quick question.
+
+1:55:25 - Conference Room (Hong Qin) - Speaker 2
+When do we give our presentations, our two presentations?
+
+1:55:31 - Conference Room (Hong Qin) - Speaker 1
+I guess once we review, let's have a next class. We have a discussion, I may put on the Google spreadsheet with a time slot. I mean, there's just so many weeks left and then you have to pick those slots. Okay. Yeah. Okay.
+
+1:55:54 - Conference Room (Hong Qin) - Speaker 2
+And then did you have any like, any like standards for each presentation, like number of slides or anything?
+
+1:56:03 - Conference Room (Hong Qin) - Speaker 1
+Not really. I mean, like My presentation is just using PDF. You could do that as well. The main point is you want to explain what the paper does. If you have the paper complemented with a code demo, that's even better. If you just spend your time to have a beautiful PowerPoint, but not even touching the algorithm, also a waste of your effort, right? So the main point is you want to demonstrate you understand the paper.
+
+1:56:44 - Conference Room (Hong Qin) - Speaker 2
+Okay. Yeah, that's better. Okay.
+
+1:56:46 - Conference Room (Hong Qin) - Speaker 2
+And so there's no strict time limit then?
+
+1:56:50 - Conference Room (Hong Qin) - Speaker 1
+Well, hopefully it's 20 to 30 minutes, not too long.
+
+1:56:55 - Conference Room (Hong Qin) - Speaker 2
+Okay. Yeah. Okay. But not a minimum of 20 minutes, right?
+
+1:57:00 - Conference Room (Hong Qin) - Speaker 1
+It's not a minimum. Yeah. Well, it can't be too short. If you give 10 minutes, probably it's not going to cut it, right? 20 minutes. Yeah, I mean, there's a reasonable range. Of course, if you give it one hour, that's probably too long. We can think about this. Right, right. 20 to 30 minutes seems to be a good range. OK. Professor. Sure.
+
+1:57:32 - Hamza Chao
+So I just want to clear things up. So we said on the, like the presentation for the papers. So we said each student has to present at least two papers. So if we work on a group, so the group will be presenting four papers in total, or is it just the two papers?
+
+1:57:54 - Conference Room (Hong Qin) - Speaker 1
+No, the presentation shouldn't be in group. Did I say presentation in group? Pretend to be as an individual, only the project is a group.
+
+1:58:04 - Unidentified Speaker
+Project is group.
+
+1:58:06 - Conference Room (Hong Qin) - Speaker 1
+Okay.
+
+1:58:06 - Hamza Chao
+Is the project related to the paper choosing?
+
+1:58:10 - Conference Room (Hong Qin) - Speaker 1
+No, your core project has to be related to generative AI. Right. The core project in fact could be, I don't know whether you are master's, it could be even along the line your PhD thesis for this work, because that's more synergistic You probably spend more time to work on that later on, right? But if you are just a master's student, it could be something along your interest. Yeah, master's. Yeah, you want to do something. Project that will look good on resume. Right, right. Something looks impressive, right? Thank you for the presentation. For the presentation, some of you seem to have confusion. What is the primary research paper. If it's a Google product or something, those are not primary research papers. That's just a technical report on something. Like ChaiGBT, it actually never has the primary research paper. It's really hard to present it. I mean, it's an amazing product, but it's hard to critique and understand the algorithm without a paper. So you have to understand what is the primary research paper.
+
+1:59:29 - Aditya C. Doppalapudi
+So professor, stuff like AlphaFold and such are not considered as papers if they're published by Google, like a white paper?
+
+1:59:38 - Conference Room (Hong Qin) - Speaker 1
+It depends on what white paper is. I mean, Meta does have the archive Lama, which is the hundreds of page archive of your white paper. It depends on the paper, right? That's a white paper with a policy features. That's not a research paper. That's a promotion.
+
+1:59:59 - Aditya C. Doppalapudi
+It's like a paper structure and paper concept.
+
+2:00:03 - Conference Room (Hong Qin) - Speaker 1
+Right. You need to have a material method algorithm result research result evaluation, all those. If he's just like, you go to buy a washing machine, there's the brochure. That's not right. That's not a research paper. He's just promotion. So Okay, I mean, once you submit that, some of you seem to have trouble to even submit a full reference. Your reference should be in professional APA scholar style. You cannot just say, I'm going to present this paper with a paper. You do have a full reference, a professional reference there. Of course, the As you upload the PDF, I can't see it. I think I gave you multiple attempts. For those I said that don't work, you can resubmit. I re-graded and see whether your second attempt gave a good choice or not. Okay. If there are no more questions, bye everyone and good night.

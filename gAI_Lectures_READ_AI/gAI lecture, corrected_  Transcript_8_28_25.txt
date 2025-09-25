@@ -1,0 +1,296 @@
+gAI lecture
+Thu, Aug 28, 2025
+
+0:04 - Evan H. Mulloy
+Hello, I can hear you, but it looks like there's an
+
+0:09 - Hong Qin
+Yeah.
+
+0:41 - Unidentified Speaker
+Hello.
+
+0:42 - Hong Qin
+Okay, hopefully this time it works.
+
+1:14 - Unidentified Speaker
+Okay. Actually, Zoom has the automatic AI. It's fine.
+
+1:23 - Hong Qin
+One, two, three, four. Let's see. There's actually one student in prison. What's your name? Aditya. Aditya. I think. Okay. Thank you. Actually, I'm going to use the Zoom. This doesn't look like my stuff. Yeah, you can sit over there. You can just join the Zoom. Look at the screen. Yeah, much easier. Yeah. Let's wait a bit to see how many students show up. It's Yeah, I did see on Canvas.
+
+2:58 - Hong Qin
+I'm going to see whether on-canvas is the wrong way or not. I'm going to start with respect to everyone here. So my name is Hong Qin.
+
+3:33 - Unidentified Speaker
+Hong means great, Qin pronounced like C-H-I-N, so Hong Qin.
+
+3:41 - Hong Qin
+So thanks for taking the General TVAI. This is the first time teaching this course. In fact, only ChessGPT is less than, two and a half years old. So in general, they are pretty new. Yeah. Even the expert has been working a few less than three years. So yeah, it's a good time to, to start. Yeah. Yeah. Not really. Yeah. So, right. So even, even the, basically the expert, uh, any other, uh, graduates working on this, they experienced less than three years. So good time. To join the field. So the course actually, ODU requires all course delivery, performance evaluation is administrated through Canvas. So basically, we will use all Canvas assignments, homework submission, grade. Even the offline exercise, we will I will still put a grade assignment there. So basically, the goal is if you see the grade on Canvas, that is your grade. Unless I put it wrong, hopefully Canvas manages your grade correctly. Okay, so the first thing we go over is the syllabus. So let me, am I recording this? Yeah, it's recording. I'm not, okay, I see it. Yeah, you're recording.
+
+5:33 - Evan H. Mulloy
+Yeah, you're recording.
+
+5:35 - Hong Qin
+Okay, I'll make sure that is. All right, so I'm going to share the syllabus. Okay, so this is the, I just uploaded this one to Canvas, slightly changed it. It's a little minor type of, I'm just to make sure that's the zone link I put it there. So cross-listed, is this 795? Yeah, this is 795, 895, CS and DSC. So that's the, are you having an issue? There's like nine people in this meeting. Oh my goodness. Which is only how you, hold on, hold on, hold on. It looks like, like nine people are waiting there. Did that put the, I don't know which one they clicked, Probably the older one. They must click the older one. Yeah, that's the older one. Hold on, let me join, also join the older one. Okay, but apparently there are still a lot of students joining the older one, so I'm going to also join the older one. My apologies. How do I record? Both of them. Hold on. Yeah, I didn't realize. Yeah, can you put a chat here? Yeah. Which one do you want? I'll just type it in the chat. The one on syllabus. The one on syllabus? Yeah, yeah, yeah. Thank you. Didn't realize that. Oh, I don't want my laptop is on, sorry. That's fine. Hey everyone, please join another Zoom link.
+
+7:44 - Unidentified Speaker
+My apologies, there's a confusion.
+
+7:48 - Hong Qin
+Apparently, I can only use one Zoom link. I cannot join two. Sorry. Please log this off. Join the new one that's in that chat. Yeah. Thanks for that. I didn't see your face when you said it was recording. This was recording. Right. Yeah. Yeah. I was wondering why there are so few people. Let's wait a bit a bit again.
+
+8:26 - Unidentified Speaker
+You have to mute your speaker. Yeah, yeah.
+
+8:41 - Hong Qin
+Yeah, yeah, yeah.
+
+8:49 - Hong Qin
+Oh, I know why the...
+
+8:54 - Unidentified Speaker
+I'm going to cancel that one. Yeah, I know.
+
+9:02 - Hong Qin
+Even though I changed that one, I realized that inside of that is still... Yeah. Okay, I just realized I didn't correct the zoning. Inside of it. You Why is it still shown? Yeah. But somehow, inside alone, it's still shown.
+
+10:15 - Unidentified Speaker
+No.
+
+10:29 - Hong Qin
+Yeah, somehow the calendar is still showing the wrong one. Okay, well, we, look how we have 15 people, it seems to be...
+
+10:42 - Unidentified Speaker
+No one is reading the wrong one. The wrong one called us and ended.
+
+10:50 - Hong Qin
+Okay, all right, thank you, thank you. I tried to... For some reason, I tried to delete it. The old one still shows up. I guess it takes the server a while to refresh it. Okay, let's do this again. My apologies for the confusion. I just realized. So apparently, Canvas automatically generates a Zoom link. I didn't realize. And then I generate a Zoom meeting myself. But then Canvas also has by default is also generous. My apologies. I didn't realize that.
+
+11:34 - Unidentified Speaker
+So, yeah, it's quite a bit of confusion to start with. Okay. So, okay.
+
+11:42 - Hong Qin
+Let me start again.
+
+11:52 - Unidentified Speaker
+Okay, so this is, welcome to Generative AI. My name is Hong Qin. Hong is great.
+
+12:04 - Hong Qin
+Qin pronounced C-H-I-N. So basically, I think I'm having a great chin. You can't remember my name like that. So Generative AI technically has been a while, but it really took off HHGBT launched in later 2022. Not to me, 2023, 2024. Yeah, yeah, yeah. So it's the whole thing is, wow, it's just two years and Nine months. Yeah. So basically, this is a great time to join STAR-JWTI since most of the people, even the experts here, have been working on it for less than three years. And for those who just started your graduate school, this is a perfect time to really work on the so-called bleeding age of AI. All right. So everything about this school course administration will be on Canvas. Assignment, especially assignment and grade, that's actually the ODU mandate. So if you see the total grade there, that is your grade. And so there's no secret book. So yeah, your Canvas gradebook is your total grade. And even if we have offline activity, I will load the grade there. So, all right. I'm going to, as a schedule, I'm going to go over the syllabus just to make sure everyone is on the same page to see how the course will be managed. I know many of you are auditing or just joined because you are interested in generative AI, so that's fine. It's actually quite, given that many of you are here just the interest on learning genotype make the time spent even worthwhile, I guess. So, yeah. Okay, so this course, okay. Zoom link, zoom link. And look for the 9731, 9251 is, apparently, there is one that's not to use us. So, office hour, you can email me and we'll probably do a on the Zoom anyway. So all course-related communication should be using the message box inside of Canvas. That way, there is a paper trail, right? If you say you did something, I did it wrong, I say, well, you're right, I'll give you a point back. That way, on the email, it's really hard to trace back. But on Canvas, and I look at it, yeah, I did say I gave you a point back, and I thought So there's a paper trail. Otherwise, in the email, you just go to the spam, I guess. I did find a textbook on this, but given the pace of how fast AI has been moving, everything in the textbook is obsolete. In fact, once we start to go over the lecture exercise, you will realize that. Let's say there's some basic concepts still there, but Python package, how things run, versions, that is always a problem when teaching the AI course. In fact, even JGBT itself releases updates all the time. I heard people working in the startup, they say, oh, there's a new version. Oh, our previous prompt doesn't work anymore. You have to have to redo the whole thing. They actually are happy to redo Because in the previous version, they say because of hallucination or other issues, they have a lot of other things. And then the new version, they don't have to do it anymore. It's a more streamlined version. But then, of course, there are other issues. If you work in psychology, mental health, you realize different versions of AI, they have different flavors of what they call personality. So then there's also another issue. So anyhow, so the whole thing is quite fluid. Okay, so we do have that textbook, so we gave you a hopeful schedule, but I'm pretty sure many of the things will change, simply because there will be new paper of AI coming out. I mean, no, and then there's a big paper. When it comes out, we probably will discuss those things rather than the textbook. In fact, many of the things in the textbook, even though the is still there, but it's kind of a bit old. But that said, it's still good to have a structure, because this is still a lecture, not entirely research-oriented, even though we will emphasize building your research skill. So it's good to still have a structure. So we have some material, go over some didactic aspect of And then goes back to the hands-on and try to develop something. But that said, given how fast the pace AI has changing, understanding the principle of mathematical foundation is really the key. Because packaging is going to change, problem engineering will definitely change, and many pipelines will change, API will change, license key will change. Many things will be changing. In fact, even different cloud provider API will change. A lot of things are changing and understand the basic principle is still the key to stay afloat in the AI tsunami or whatever you call it. We are going to go over the generative AI basic concept and then start with some, I guess, classical generative AI method like VAE and general advisory network. Then we're going to go over a very popular model called autoregression model. And some other lesser-known but still very useful, normalization, normalizing flow, energy-based model, diffusion model. If you haven't heard diffusion model, I don't know what to say. We're going to spend a lot of time on transformer and large language model, although the current the trend is actually a small or tiny language model. We still call it a larger language model, but apparently people are now pushing for a tiny language model, small language model. Reinforcement learning. Reinforcement learning clearly is an old technique, but given the AI, agentic AI reinforcement learning has taken a new life, entirely different meaning. Advanced again, some audio. So, Chai GPT is about tags, right? And then you have multi-model, Vision GPT, Vision LLM, VLM. Basically, it's a window. What's the next thing? It's really the audio. Audio speech is extremely hard to handle. Actually, if you look into that, you realize audio-speech personalization is an extremely challenging task. So that part, we are going to go over some of it. And this world model is basically a genetic AI reinforcement learning all combined. I use the word model because I'm textbook. There's actually, there must be a better way. The word model doesn't really reflect what are the principles. I don't know, but that's what the textbooks use. My understanding basically is physics-based reinforcement learning of agentic AI. So, right, the old day you have the pre-training of GPT, but there's only one internet. That day is gone. You cannot find another internet from the parallel universe. Unfortunately, you cannot do that. All right.
+
+21:22 - Unidentified Speaker
+So we have only one internet. We pre-trained the IOM. That's gone. And how do we improve IOM?
+
+21:31 - Hong Qin
+So the rule-based or physics principle-based reinforcement learning, and especially agentic AI in this world, so-called world model, there's actually a lot of investment in that. In fact, NVIDIA, Meta, I'm pretty sure OpenAI, they all invested in this so-called physics-based or whatever you call it, reinforcement learning. Basically, AI had to learn by try and error, right? When a human child is born, it didn't Read the entire internet become intelligent. In fact, not at all. It's just interact with mom and dad, a few maybe sister, brothers. That's it, right? So all they are friends, but it's the baby quickly learn a lot of things, right? So pre-training with the internet seemed to be a, it's just a kind of a, bullet holes are not a very smart way to There must be a better way to learn. The world model and the multi-model reasoning, I cannot relate it. I'm not sure whether we combine them or not. Right now, I'm not clear about it. Hopefully, as we progress, we will have a more clear... I will have a better outline to combine those. A lot of agentic AI new development. But unfortunately, the whole thing is mostly industrial-driven, not many textbooks or papers on it. That makes it a bit challenging how to teach that topic. Most of the agentic AI I try to search is mostly industrial, also proprietary. You really don't know what happened there. But it is really or once you start to use your AI. Genetic AI basically is trying to mimic human learning. Of course, there are also better ways than language model, transformer model, to how to do the re-learning AI. The re-learning AI doesn't have to be transformer-based. In fact, hopefully not, because humans certainly doesn't re-learning based on tokens. In fact, many kids are animals, they don't really speak, but clearly they have intelligence. In fact, we can speak, but the letter, written language, is a very recent thing. But human intelligence has been, I don't know, probably millions of years. If you really start from primates, that intelligence has been around for a very long time without any written word. So this This token-based reasoning clearly works, but not required or necessary. Some other things. Actually, autonomous driving and robotics clearly is the biggest buzzword or the trend right now. I really hope we can also dip our toes into that. It is not much. Last week, probably just a few presentation discussion. But it is a very interesting world because once you have the reinforcement learning or genetic AI, if you want to finish autonomous driving and robotics, it's basically a natural extension of that field.
+
+25:23 - Unidentified Speaker
+In fact, with this reinforcement learning, one of the biggest data is really trial and error.
+
+25:30 - Hong Qin
+And that actually really put Tesla at a very good position because it has so many cars and robotics. And every time the user interrupted and corrected, it had a reinforcement learning data goes that way. So I say that because I drive a Tesla and I have to correct it almost daily. So yeah, one of the annoying part is One time I drive, it always, for some reason, I think the expressway I should go, but the expressway is actually blocked. There's a flag that says, do not enter. They try to go away. I correct it, and then there's the next exit, try it again. Three times I say, okay, that's it, I stop the autopilot. Apparently, the whole autonomous driving thing in probably the infinite stage. Right, this will have a course project. So you can work as a group, three at the most, but Two is probably ideal.
+
+26:54 - Unidentified Speaker
+One, that means you are really brave.
+
+27:02 - Hong Qin
+Anyhow, but you can't decide what kind of a project. The project could be even related to your thesis work, or related. But it has to be general TBI related, or pre-training, or autonomous, re-learning, reinforcement learning on the agenda. Diffusion model, it had to be something, you had to first propose a project and write an outline why you want to do that. If you are the one person, you can write that proposal yourself, or you have a team member, you can write that and then describe each team member's contribution not emphasized. At the end of it, hopefully everyone will... Actually, I probably should put that. The final report will be IEEE full research paper format. Actually, I should put that. Yeah, but the final project. The project comes a coding project, but it can also be a principle project. I don't know whether some of you really want to. It could be entirely theoretical methodology. If you come up with an entirely new re-learning AI model, that is possible, I guess. Of course, if that's the case, you may not be able to even implement that without a serious GPU, right? Oh, someone asking a question. Yes. Hello? Hey.
+
+29:13 - Hamza Chao
+Yes, Professor.
+
+29:13 - Hong Qin
+I just want to ask, are we going to use any frameworks in the course, like LangChain?
+
+29:23 - Unidentified Speaker
+Sure. Actually, yeah, we should.
+
+29:27 - Unidentified Speaker
+Actually, I will go over that.
+
+29:33 - Hong Qin
+We will use the Google Cloud Vertex AI, which will be provided the 2U3 fly the old domino university. Which means that you have some good GPU to use for free, but I'm not sure what kind of API or software to use. But I think if you just use a line chain with hacking face API, it's probably the easiest. But then That's probably quicker for development, but if you really want to learn something, you may really want to write some base level code. It all depends. Of course, if you use an API, your development will be much faster. Your prototyping is much faster. For many of you who are PhD students, if you want to publish a research paper using API, which means it's really hard to tweak it, right? So that will put you in a disadvantage, right? But of course, if you write a low-level code, modify a model structure, that means you will need some serious GPU. But the good news is Google Cloud Platform is a partner of Domino University, those will be provided to you for free. So, of course, it's catchy. You need to learn how to use the Google Cloud Platform and the Vertex AI. That platform, you need to learn how to use it.
+
+31:22 - Hamza Chao
+Thank you, Professor.
+
+31:23 - Unidentified Speaker
+Sure, yeah.
+
+31:24 - Hong Qin
+But on the other hand, once you learn how to use that, it looks good on your resume.
+
+31:31 - Unidentified Speaker
+Yeah, that's what I was, yeah. Yeah, it looks good on your resume.
+
+31:36 - Hamza Chao
+Sure, yeah.
+
+31:37 - Hong Qin
+In fact, I'm not a proficient user of Google Cloud Platform myself. So it's also new to me. And besides, it's new to Old Domino University. In fact, you will all be the guinea pig to use it. It must be like something we got this semester.
+
+31:55 - Unidentified Speaker
+Yeah, yeah, yeah. In fact, you can put it that way.
+
+32:00 - Hong Qin
+You are one of the first students at Old Domino to I'm not sure, as the pioneer user, or the, no, as the, what's the word? There's a technical word, as the test user, as the... Testing user? Yeah, there's actually a very good professional word, I forgot the first... Beta user? Sorry, what? Beta user? I guess so, yeah, beta user. Yeah, whatever term you can use, looks good on Redmond, you can put it down there. There will be some assignment, presentation, final presentation 20%, the course project 50%, project presentation 10%, participation will be 5%. Then you will say, someone you may wonder, how do I keep track of participation? You will see later on. So there's an automatic 5% penalty if the submission is late. I mean, that's the regular terms. So the other AI usage. So generative AI should be used responsibly. What this means is that when it's appropriate to use, you should use it as much as creative that you can. For example, agentic AI is extremely powerful at coding work. So we should take full advantage of agentic AI. In fact, I even heard people have a startup company. That company is just one person with a dozen agentic AI agents. So basically, in the old days, you run a startup company. Raise the money, hire a group of people. And now you have started a company, you really found and support a dozen of AI people, AI agent. Yeah, it's kind of scary, isn't it? It's also not good for the fresh graduate looking for a job. Which means if you now want to look for a job, you have to really look at the how to work at a high level. If you do a work that can be replaced by AI, unfortunately, that's too bad. In fact, some of you, if you want to do a product, you could have the identical AI team to see how it works. If the GCP can be configured to do that, yeah, we should try that. Actually people called virtual lab. I mean, I run a research lab, but fortunately, my lab, there are actually people there. But there are people, at least on paper, they run a lab with so-called virtual scientists, virtual experimental, virtual grand writer, whatever they call it. It. It's a virtual lab. We actually will discuss that paper. It's a recent Nature paper, and they use that virtual lab and develop some vaccine for COVID-19. And as a control, they also have a human research propose a few vaccine for COVID-19. It turned out that non-human proposed one worked, and the proposed by the AI agent, I forgot, three or five works or something like that. So it's a clear way about the genetic AI there. Yeah, it sounds really scary in a way, so yeah. Yeah, kind of, yeah, yeah. Okay, but so if it's really a cutting-edge work, or genetic AI technology side, yes, go for it. In fact, your report can even be summarized, polished by genetic AI. But here's the catch, the content cannot be generated by AI, right? So you are actually learning how to use that. If all your work can be done by genetic AI, then what you are doing can be replaced by AI, right? So then what's the point? So basically, you have to do something AI cannot do. If you submit a report, a report also generated by AI, then why you are here? That means AI can do everything you can. You can be replaced by AI. You need to learn to do something AI cannot do, or at least right now it doesn't do very well. That's very poorly. Basically, even for coding, certain level, AI doesn't do very well. At least at the architectural level, the organization level, that's AI, agentic AI still not, let's say it depends on who you talk to. But from my own experience, low-level coding, it does extremely well. But once it goes to a certain complexity, it needs a specific instruction what to do. You have to really want to tell the AI what you want, and then you can do it. Otherwise, it's really become quite frustrating because they always return something you don't want. That's the syllabus. Now, I want to show you the next part. I often use a Socratic This actually works extremely well. So what is Socrative? In fact, let's see. I probably should send a link. Yeah, yeah, yeah.
+
+38:41 - Hong Qin
+Let me show that. So Socrative is this, if you just Google Socrative, Socrative is the philosophy, right? Socrative teaching, Socrative learning means conversational learning by quiz. So if you log into that, if you log in as a student, And let me see. Say it again. Yes, I believe so. Yeah. So you want to join the room, which is my name, full name.
+
+39:31 - Unidentified Speaker
+Oh. Yeah. Yeah, the room. Oh, yeah.
+
+39:39 - Hong Qin
+Oh, hold on, hold on. Can you try it again? This should be anonymous.
+
+39:58 - Unidentified Speaker
+Yeah, no, there's no, let me type it.
+
+40:23 - Unidentified Speaker
+Okay, so. Yeah, so this is a novel.
+
+40:44 - Hong Qin
+anonymous survey Yeah.
+
+41:25 - Unidentified Speaker
+OK, yeah. So only five students.
+
+41:33 - Hong Qin
+Are there more students joining? Yeah, yeah, yeah.
+
+41:52 - Unidentified Speaker
+Yeah, seven is good enough, I guess. It's just for exercise.
+
+41:59 - Hong Qin
+And many of the people are still auditing, so it's fine. Yeah. OK, so how do I show the result? No, it's not finished.
+
+42:18 - Hong Qin
+Oh, here, here. Sorry. They changed the interface. Oh, wow. OK. We have people, quite a lot of people from Africa, Asia. Africa, Virginia is expected. So yeah. Other countries. Oh, there are other countries in North or South America. Interesting. This is quite spread out. Do have a world model. I guess I'll tell you about this. No one from Europe, I guess. That's fine. It's probably enough. Where do you complete your undergraduate Yeah, again, no Europe, no Australia, that's fine.
+
+43:22 - Unidentified Speaker
+Okay, why are you taking this? It's just for fun, out of curiosity. OK, good. I think we can select multiple options.
+
+43:54 - Hong Qin
+Oh, OK, yeah. Yeah, yeah, yeah. Actually, probably all questions. It's a survey, I didn't limit it, yes. Okay, very good. Your major concentration of program is, I mean, I know some of you are not even at the school, so this is, yeah, it's just, yeah.
+
+44:34 - Unidentified Speaker
+Yeah, of course, science, data science. Yeah, that's fine. That's fine, yeah. Which is expected.
+
+44:44 - Hong Qin
+Although there are students from non-computer and non-data science. I don't know who that person is. There are some, yeah. Okay. All right. You are all welcome.
+
+45:03 - Unidentified Speaker
+All so I'm going to skip to the next one.
+
+45:12 - Hong Qin
+What grade are you trying to get on this course? It's just for fun. We have a lot of highly How often do you plan to check out the Canvas course website for cross-material assignment and exam? Usually, I think when I post it, you should get the email. So basically Canvas is also where I keep track. Sometimes I don't remember, I email something, I go back to Canvas to check, did I send an email or did I not? So let's all fall back to Canvas. At least if Canvas fails, we can blame Canvas. So Canvas doesn't work. Yeah, it did happen. Last semester, for some reason, cameras all of a sudden, there's a glitch. It does happen. One course I took, we didn't use cameras, we just sat in person. Oh, I see, yeah. Oh, we have some people, oh, I guess some fresh PhD and some people, oh, that means semester. Good for you. That's interesting. There's no one and a half or two years. It's certainly not a uniform distribution. Only final year grad students or new PhD students? Oh, yeah. That makes sense, actually. Because a PhD student, you finish those and then you don't need to take course anymore, so you don't take this. Actually, it's not uniform, it's probably expected distribution based on the course progress of the degree. How are you with Python?
+
+47:55 - Unidentified Speaker
+Yeah, very good.
+
+48:06 - Hong Qin
+Yeah, notice this Python is capitalized. I guess the Python is lowercase. Yeah, if you had a Python in the middle, it's capitalized. But that said, with AI coding, basic Python is not the issue. That said, the main issue when it had a bug or the error, you need to figure out how to correct it. That actually is not easy. So if you are unfamiliar with Python, even though it can do some very basic code, but when it made a mistake, it will still be challenging for people with little Python experience to correct it. So it's kind of a chicken and egg question. Honestly, I don't know how to address that. I guess we shouldn't say learn coding anymore.
+
+49:22 - Unidentified Speaker
+This is an old question.
+
+49:27 - Hong Qin
+And I guess in this case, not learning coding, learning a new technique. Maybe I should rephrase that question. Sorry. That's a leftover question. I forgot to revise it. So anyway. Yeah. Coding over time, hand-down project, reading book, watch video project. Yeah. I guess, yeah, basically coding is a skill. Coding is not a concept you can memorize. In fact, API, Python, software version change all the time. New platform coming, new language coming, new format comes. It's always changing. For the code written, like the textbook written two years ago, I'm pretty sure many of those things doesn't run anymore. Yeah. Oh, this is one of the kind. This person likes Kaggle competition. Good for you. That's really, yeah. Okay. All right. This is, it's kind of self-explanatory. But still, I want to see how it is.
+
+50:56 - Unidentified Speaker
+Well, sure, no. Yeah, that's faster.
+
+51:07 - Hong Qin
+Do you prefer to type your code in the evening timing issues. I guess maybe I should, is that do you have to take that, that's what, prefer is a different word, I mean, right. Yeah, I should revise that question to get more information. Prefer is another. Have you generated a video or posted it online? Generated by using the AI or? Good question. Doesn't matter.
+
+52:23 - Hong Qin
+Yeah.
+
+52:24 - Evan H. Mulloy
+Wait, is this videos generated with AI?
+
+52:29 - Hong Qin
+No, I didn't say that.
+
+52:33 - Evan H. Mulloy
+Have you generated a video?
+
+52:36 - Hong Qin
+OK.
+
+52:37 - Unidentified Speaker
+OK, well, OK. Yeah. Yeah.
+
+52:41 - Hong Qin
+Because this course does require you to present your project in a recorded video. Some of the assignments. Have you used DataCamp before? It's actually a very popular platform. I know, but from a different course which I took yesterday, they mentioned it just yesterday for me. Oh, I see. Okay. Is that the last question? Yes, that's the last question. Complete this, finish the activity. Oh, I should have shown the name.
+
+53:27 - Unidentified Speaker
+So there, and in fact, that's how I could take attendance.
+
+53:35 - Hong Qin
+But this is anonymous. I saw an illuminated name, but apparently it still had the input Yeah, but I guess you could put a different name now. Okay, so this is how I'm going to take a roll call. How do I?
+
+54:12 - Unidentified Speaker
+or launch, as I say.
+
+54:15 - Hong Qin
+Oh, I should, for the anonymous, I should unclick that, but this is a roll call, so I'm going to require a name. Okay, can you, oh, this is just, this is how I'm going to take a roll. Call this for you to exercise. So when I did this before, people often say, for example, Andrew, they will put in there Andy. And some people actually choose to go with a middle name, which is different from what I see in the ODU catalog. But it turns out that your email address is actually can be treated a primary key, which is I can track your attendance. That's how I'm going to take attendance. I don't know how many... Actually, some of you are not students. That's fine. But for the student who you want to see how I'm going to take attendance, this is how I'm going to take attendance. Although, I'm not going to do that quite as strictly. But- Would there be a grade associated with that? Yes, 5%. Yeah, 5% attendance. Which means I have to analyze this data. And guess how I'm going to analyze this data? Percentage? No, I was going to just feed this into AI. Yes, yeah. That would be the same. Right, right. Yeah, very simple, basically. Put this into AI. I know you're already putting user name, but this is just to make sure there's the first name and last name. Should we put a comma with the user name? That doesn't matter. With actually all the language model now, that doesn't matter. Much. Okay, so there's one student still missing.
+
+56:39 - Unidentified Speaker
+That's fine. Once I have the email, I should be good.
+
+56:46 - Hong Qin
+Okay, this is just to do some basic theory, but imagine this can be also an in-class quiz. Right. Oh, wow. We have a very good prepare the class.
+
+57:18 - Unidentified Speaker
+We'll prepare the class.
+
+57:26 - Hong Qin
+Okay, yeah, so. The main purpose of gradient descent in machine learning is to...
+
+57:49 - Unidentified Speaker
+Yeah, gradient descent for optimization.
+
+57:56 - Hong Qin
+Normalize the input feature that's usually called normalization, but that's not good in this end.
+
+58:09 - Hong Qin
+A love hitting occurs when If training data is too small, that's often, it may not even convert, it may not even plateau, basically. But overfitting means the actual training, it's training well, but it's, if you see the data, a new data, it doesn't work anymore. Anymore. OK. You said? Models can learn noise from limited data, but that also comes as overfitting, doesn't it? Oh. Like in Google. Oh.
+
+59:30 - Hong Qin
+This is just to see. Actually, if many of you already know Python machine learning, this should be an easy question.
+
+59:47 - Unidentified Speaker
+We have an answer out of place.
+
+59:53 - Hong Qin
+It should be 1, 2, 3, 4. Because this is append, right?
+
+1:00:01 - Kris Seekford
+But then it says print A
+
+1:00:04 - Hong Qin
+It should be one, two, three, right?
+
+1:00:08 - Anton Rasmussen
+Because- Yeah, with Python, you have to do a deep copy if you want to, because the, you're basically copying the list.
+
+1:00:19 - Unidentified Speaker
+Oh, I don't know.
+
+1:00:20 - Hong Qin
+Good question. I haven't double checked it. Let's see. It is 1, 2, 3, 4.
+
+1:00:38 - Unidentified Speaker
+Because I guess that's the reference.
+
+1:00:47 - Hong Qin
+So B equal A is a reference. Yeah, but good question. Good refreshing of Python. This is also just a Python idiosyncratic thing. It's much logical. Dialect, right? Python is just a very special language. It does things in its own Python way. The Python is the end exclusive, so that three is not there. But zero, most languages, including Python, start from zero. Oh, okay, that's the last question. Okay, so basically this is how I'm going to do the roll call and also just get a feeling how some concepts or views are spread. Sorry, what? Do you take like previous classes concepts as a first person? I mean, no, I do, yeah. So yeah, so just to make sure people actually are there. In the old days, make sure students are not sleeping. Nowadays, I want to make sure it's not actual AI agent taking class. So that's actually quite a serious problem. In fact, if you watch some video online, you see the student in class sleeping and AI agent taking notes. So it does happen in some online video shows. Yeah, it's a wild west when the AI comes. There's like AI notes in the chat already. Yeah, yeah, the order or something, yeah. But it's good for you, so at least that's a good use of AI.
+
+1:03:05 - Unidentified Speaker
+Okay, so that's how we do the Socrative. Now the data cap, for those who haven't is basically this. So I request a General TI data account.
+
+1:03:19 - Hong Qin
+The data account, usually you have to pay to use it. But because I apply for the academic discount, so I put your email there, you enroll in this General TI Fall 2025 course, You can take all minors in every course on Datacamp, you can take it for free. But that said, I'm going to give some assignment just related to generative AI. So if some of the Datacamp course is too easy for you, or you're already taking it before, you are free to take a more challenging course. Right. So, I mean, some of you, if say introduction to IOM in Python is too easy, too low level. Understood. I mean, some of you had been doing, working in the industrial, had a full time job. So, I mean, that's probably like, well, what's the level, the lowest level you'll do. But then there are some other challenging course, right? Yeah, hopefully, I mean, there's hundreds of course, right? So I'm pretty sure there are some other interesting course you can take, right? So if you don't want to take this one, you could. As long as it's more challenging, it's fine. I mean, in fact, if you just do a search, if you just search a course, there's really a lot. For example, you can
