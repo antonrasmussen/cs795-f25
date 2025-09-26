@@ -1,2 +1,11 @@
 do_not_commit
 presentation_1/public
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.flv
+
