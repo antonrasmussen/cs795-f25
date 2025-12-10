@@ -20,7 +20,7 @@ Fall 2025
 <i>Exploring the architecture that transformed Natural Language Processing and paved the way for LLMs.</i>
 </div>
 
-<!-- Good evening, everyone. My name is Anton Rasmussen, and tonight we're diving into one of the most influential papers in modern AI: 'Attention Is All You Need.' -->
+<!-- Tonight we're diving into one of the most influential papers in modern AI: 'Attention Is All You Need.' -->
 
 ---
 

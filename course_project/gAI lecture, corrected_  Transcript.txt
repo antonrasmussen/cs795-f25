@@ -1,0 +1,404 @@
+gAI lecture, corrected. 
+Thu, Oct 23, 2025
+
+0:43 - Hong Qin
+Okay, good evening. Let's wait. Wow, I probably should give bonus point to the student who here on time. Okay, Terry. Good for you. Show up on time. Thank you. Let's wait a few minutes. Yeah. Yeah, I'm up to then. Bye. Okay. Okay, so today I'm going to go over the textbook version of Transformer. For those who haven't signed in, please sign in on Socratic. I only see three students sign in. But there are Uh... So. So the textbook version is the decoder MLPT I found to the beginning of the chapter. What? Ah, let me see. Okay, yeah. So, the textbook version of Transformer is the GE version of Transformer. It's just stripped down and uses a very small dataset. I'm still impressed with how it actually implements it. I can't be wrong, actually. So, it uses one dataset from Kaggle. I downloaded that said but it looks like it's not recognized so I have to revise the code to CSV. In case you can try yourself. The data file basically is a text file file with some vine review is going to be then tokenized of the first padded application, then tokenized and the net token prediction for training of the decoder on the GPT. And the textbook also goes through the query, key, and the value for the transformer. We went through this last time on the Excel version. This is the textbook also trying to explain this in a very detailed, annotated diagram. Yes, I guess the pink elephant tried to get into the car, but it was too... What's the next word? Too small, I guess. The car, it was too small. We have this word embedding and that can be both key value and a query. And the query is there. Actually, just one of them. So, an attention is calculated between key and the query normalized by the dimension of the query. And then that should be the tension weights, which is basically probability. Now the tension and then multiplication with the value, the output embedding. And since this block is wrong several times, go over this again and again for a number of times. There are multiple head and you just expand this matrix that concatenation basically. The test will actually give a very interesting so-called causal mask illustration. This really should be called regressive mask, autoregressive mask. You have query and you have that autoregressive regression mask. The textbook actually gives you this mask, chordal mask. But in reality, if you actually see how this mask is implemented in the decoder, let's see. It's only implemented here, attention here. So this is a good illustration of the layer normalization, which is the batch normalization. So they actually work on different dimensions. There, that's the code of actual implementation. It actually didn't, it's just called a tensor Keras, causal mask, but it actually didn't explain how that is implemented in Keras. If you actually really go into the Keras, it uses the same exponential large and active number as we see in the Excel file last week. It basically applies a very large negative number to the attention score, which means it basically mask it at zero. So that's a causal mask. But in this case, it's just the carriers, which is, I guess, it's fine. I mean, it's just the attention mask is that the so-called a mask. It really should be called autoregressive mask. But it is something we can modify ourselves if you have more specific. Instead of next token, if you have other model and you could modify that mask. Okay, I'm putting position embedding and the textbook had a very nice position embedding illustration. So, token embedding and then added position embedding to the token embedding. Very nice. And then for the GPT, it's going to use next token prediction, but it's actually also use the text generator from the LSTM section, which you may not remember LSTM section, we use a text generator that also had the temperature there. But we're going to use the same temperature text generator for this CBT model. And it's very nice. It actually shows a text generator autoregression model. You can actually apply that class to any other gAI model. It has to be a CBT. If you have another This model, we could put that as well. Okay, so that's the, yeah, this, the Python code, this is really high level. And so if actually, I actually put that on the, Vertex gAI, it doesn't run, which is not surprising, but apparently Gemini can correct most of it. Except that JSON file, when I download from Kaggle, the Gemini says it's corrupted. And I'll be recognized JSON file, which is really odd. I mean, I saw Kaggle with maintain. So, but anyhow, so I had to rewrite the code to use a CSV file. That's the only thing, which is outside of the Gemini kind of control, I guess, yeah. So anyhow, so this is the, most of this is just a textbook code, but I updated the sum with Gemini and replace the JSON file with a CSV file and get it running. So it still has some error, but it's still run. So I just ignore that error. So, okay. So we have the, yeah, incredibly, the vocabulary size of 10. Oh, by the way, I use the, let me see what running environment I use. How do I see the environment? I connected, but how do I view resources? But, oh yeah, here. It's the Tesla T4, Yeah, so it's nice. I mean, this Vortex, yeah, Vortex gAI is nice. We got the GPU running and yeah. So, okay. So we have a 10,000 vocabulary maximum length. That's for the, I guess, the batch training. Embedding dimension 256. Key dimension is also 256. And number of heads is two. And feedforward dimension 256. Validation split Validation split 0.2. That seems to be a bit small. Anyhow, I also had a random seed 42. No, that's fine. Batch size 32, epochs, fine. I basically use appendix to load the CSV file. The textbook code is JSON. I mean, if you can fix that error, probably it works, but somehow I use CSV. That said, I haven't checked whether the pre-training is the same result as the previous one or not. But anyhow, it is wrong, so. Okay, so that's the, I loaded the data. There are those recipe, I didn't check whether it's still the same or not. Anyhow, at least it works. It is wrong, sorry. Whether it works or not, I haven't really double-checked it. So we padded punctuation, we padded, and then... Okay. Token allocation. Yes, if you really look at the token allocation, double-check that. Training set. Tokenized. Yeah, after the text is tokenized, it's really hard to understand it again. So I guess you have that vocabulary back. Anyhow, that's after tokenization, that's what the input look like, Then we created this color mask, which is basically autoregressive mask. Okay, transform. Key dimension, those are just hyperparameter, There is also a dropout rate. Layer normalization. Multihead attention. Where do we see the Causal mask. Oh yeah, causal mask. Attention equal causal mask. But it's basically self-attention. So this is the decoder only. There's no cross attention. It's all self-attention. So this is the decoder. Certainly with autoregressive mask, it's all self-attention. If you recall in the Excel file we did last week, there's an encoder decoder. The decoder, after the self-attention, it actually uses, I believe it's a key from the... Oh, it's a query. Either query or key. From the encoder and then that's how the cross-attention is done. And the value still comes from the decoder in that Excel file. But apparently sometimes the value also comes from the encoder and depends on the implementation. Position embedding is called, is this the, in fact, we can't have the same task. So where is the implementation of position embedding? I don't know if it can do that or not. I'll just see whether... What would have happened? Hello. Oh, embedding that. Yeah, it is helpful, right? Token and position embedding class. Layer dot embedding. Wait, isn't that just this? Token position embedding. It's inside of this. It's become a circular argument, isn't it? Well, here, here, sorry. No, it's not. This, that's correct. Oops, sorry. That's it, actually. So it's basically use a layer.invite. That a Keras function? I guess so. This, yeah. It's just called Keras embedding. This is really helpful. Now it's built a transformer model. Input, token embedding, transformer block. How many blocks do we have? Took me a minute to change the input. Is this just one block? This looks like just one block. Interesting. Okay, that's fine now. It looks like it's just one block, isn't it? Number of hands, number of dimensions, yeah, it's just one block down. Okay, hang on. I mean, for this illustration is fine. There's no load model. Then we change this. To change this, we actually use the next token prediction. This is actually, again, the temperature. Actually, you can, let's see. Explain the temperature in. It's basically, which means, I mean, the temperature is one, is not changing. Temperature is small, that means the larger probability probability should be even larger. Is that? Yeah, that's right. Yeah. Wait, wait, wait. Is that just an option? Low temperature number is raising. It is raising. Okay. Yeah, low temperature is raising and high temperature make it randomness, I guess. Yeah, that's correct. So, okay. Then, one, it means no change. So, okay. Where is the last function? Where is our last function? Anyone see where the last function is? Yeah, it's already changed. So the last function must be defined before. Okay, where is that GPT compile? Where is that line? Where is that? Oh, here, sorry. Yeah, it's this line. So it's a cross entropy, it's a cross entropy loss function. So, it is really helpful. I mean, otherwise, hundreds lines of code that you try to understand yourself, it's not that straightforward, at the minimum. And there's actually also save a checkpoint. And this one also has an error. But apparently because Keras has changed how its model checkpoint is implemented. Because Keras is from Google, Gemini is from Google, so Gemini fixed the Keras error very straightforward. This part is completely fixed by Gemini. Amazingly, with that the NVIDIA GPU running, it's take about, I want to say 15 minutes, something. Yeah, I run it before the class and I want to say 5.20 or 5.30, something. I need to finish it before class. So it's extremely fast. So this fit. Is OBD. Very slow. This part also has an error which is also fixed by the Gemini. Those are very routine, basically routine syntax. For gAI to fix those syntax errors, it's very easy. The way it doesn't run anymore also because the Keras package has changed This is the next token prediction and let us to see how the model works. We have the input prompt and then I change this just 20 token, temperature is one and we can see how it's predicted. Well, it's actually give the colon, which sure, of course, the next one is colon, which is nice. And then you see, after that, the next one, it pick California or Washington or Virginia, actually. I mean, apparently, California is best associated with wine, which seems to be right. So you pick California, and the next one we call it again, I guess. But after California, it pick what? Which one is that? Oh, it didn't pick Cabernet. It actually picked Cabernet. Interesting. If you look at the probability, Cabernet Kaepernick is actually higher than Chardonnay, but he picked Chardonnay. Interesting, yeah. So it's actually not the highest, but there's some randomness here. He picked Chardonnay, yeah, so. I have no idea what the... This is the red one. I have no idea what the rest of it is. Anyhow, so after picking Chardonnay, the next one is the colon. It is the colon, yeah. After that colon, Let me pick this. Wait a minute. That's a different prediction than that. Try that name. Pick like, Oh yeah, yeah, yeah. Wait, wait, wait, wait. It did a, oh. Interesting, pick a like, but look at the like, It's not even in the top five. One, two, three, four, five. The top five is this uh here but it actually pick a like wow this is actually this is interesting I mean look the the next if you this is I'm quite surprised by this uh wow uh the like the probability is not even there uh in the top five so but it picked like so That is interesting, certainly, yeah. This one, Acidity is there, a fine Acidity. This one, the next token is Acidity. It's actually at least in the top five there. Yeah, so it is interesting. Predict next token, not always the one with the highest probability, I guess. In this case, the save is also nowhere on the top. That is interesting how... So if we pick the, let's see, pick the temperature 0.5, low temperature, Let's pick a high temperature. Oops. Five, which is supposed to be more random, isn't it? More creative, I guess. Okay, so. Oh, I printed too many tokens. Sorry. This is funny. I should limit it just 20 tokens. Yeah, Italy, component. Oh, this is not even one anymore. This is just, really just garbage. So, yeah, apparently high temperature become, this is just nothing. Component mask away, but yeah, this is not even one anymore. Chubby, okay. This is really just nonsense now. OK, well, you can see that when the more randomness are there. Oh, sorry, I clicked again to run. Sorry. The next example point 0.5 temperature. 0.5, okay. I'm gonna change that to just 10 token, how about this? 15. Whoops. Is it running? Okay, it is running, okay. Let's see. That's fine. Let's see. My review of Germany, I have no idea what that is. But that doesn't look like this. It's not Certainly not one of the top five. After that, what's the next word? Actually, that seemed to pop up. That is 100%. Yes, it is. What is that word? Oh, it's also there. Interesting. And this German thing seem to be... Oh, that's because the polypies are highly selective. So I see. That's because we changed it to lower temperature. Very nice. Yeah, so this is... Are we picking this? Yeah, this, yeah. So with the low temperature, we always pick the highest probability one. So yeah, still good. It's not a perfect example, but still seems to be a useful example. So let me save this one. The problem of the Vertex gAI, I still haven't figured out how to communicate this with GitHub. I had to save, download this. And then upload it to GitHub. By the way, anyone figure out how to communicate from Vertex gAI with GitHub more efficiently? Well, if you do, you can put it in your report if you don't want to show off here to the class. All right, so I'm going to pause the recording. Am I pausing the recording? Okay, it looks like I stopped the entire recording. Sorry. So I'm now going to start recording again. So for the next portion, we are going to start with the practical run for your Google Day presentation. So it looks like Ivy group has, the poster already there. So I don't know. I'll post that on GitHub.
+
+36:19 - Evan H. Mulloy
+Yeah, so I kind of want to know, is this going to be like a sort of like a job fair where we each have our own printed poster and we were in this case, Aditya would sit there and answer questions from people who come up to the stand of this project, or that's what they use.
+
+36:41 - Hong Qin
+Yeah, that's my understanding. But that's a I don't run the I'm not an organizer. Terry, do you? Can you offer more information how the poster session will be run?
+
+36:54 - Terry R. Stilwell
+I wish I could the communication. The way I understand it. Yeah, I believe we'll have the posters up for like half an hour. And then people can come by and just ask questions and talk about your research.
+
+37:15 - Hong Qin
+What time is the poster slot finalized?
+
+37:20 - Terry R. Stilwell
+Yeah, I believe it's 12 o'clock, but I'll double check and get back to you.
+
+37:28 - Evan H. Mulloy
+possible presentation component?
+
+37:35 - Terry R. Stilwell
+I think it'd be more conversational. I don't think we'll be standing up in front of anyone. I think it'll probably just be like an open room with us sitting there, and people come by, and they'll say, hey, tell me about your poster or research.
+
+37:53 - Hong Qin
+So basically, I would suggest you But what I suggest everyone prepare elevator pitch. Standing from poster, try to get all your important part across in like a minute or something. Basically, when people walk by, you want to promote your poster and yourself as quickly as you can. Elevator pitch. Yes, Aditya.
+
+38:22 - Aditya C. Doppalapudi
+Yeah, I just wanted to How long is the poster thing? Is it for half an hour or an hour? I don't think I've missed the part where you mentioned about it.
+
+38:34 - Terry R. Stilwell
+I will let you know. I believe it's going to be half an hour. OK.
+
+38:38 - Unidentified Speaker
+Perfect.
+
+38:39 - Unidentified Speaker
+Thanks.
+
+38:39 - Terry R. Stilwell
+But I've The one that they just sent out today was half an hour. So I'll double check.
+
+38:49 - Aditya C. Doppalapudi
+I just wanted to know by what time I'm supposed to reach the venue. So I can prepare. Yeah.
+
+38:54 - Hong Qin
+Yeah. Sure. I understood. Yeah. Yeah, I'm sure when you have to be there to print a poster, they will let you know. Yes, Kris. Yeah, so.
+
+39:07 - Kris Seekford
+Is there still time to make changes to our poster and then send it to you for final publishing?
+
+39:13 - Hong Qin
+It's not me. And unfortunately, I already submitted. They asked me to provide all your poster yesterday. So I would say, unfortunately, I have submitted all the PDF. It's fine. I mean, it is informal. So yeah.
+
+39:40 - Kris Seekford
+OK. Thank you.
+
+39:42 - Hong Qin
+Yeah. I mean, I'm sure you want to correct something, correct mistake. But if you really want to correct, unfortunately, you probably have to print out yourself. I'm sorry about this. But it's fine. I'll say if you have a mistake, what do you really have to do? You can bring a Sharpie, just correct it on a poster yourself. Or you can print out in your own printer a small piece and just post it on a poster. This is the correct version. I have seen all kind of correction on the poster. It's fine. The easiest way is just to bring a Sharpie and if there's a typo or wrong number on your poster, just correct it. If indeed that's a severe mistake, you wish to correct. But most likely people won't even notice. You have a short time to present their poster.
+
+40:50 - Kris Seekford
+Yeah, you know, just with coding. Once you start it, you might have an idea in the beginning and I have it on my poster and then once I'm starting to actually code, you realize, OK, well, this won't work, but this might. So just slight tweaks, but I can talk.
+
+41:05 - Hong Qin
+Yeah. Yeah, I mean. I think that in fact that people say the poster you should put the most title. There are different ways to present a poster. The template we send to you is more like a standard poster, but if you Google on the Internet, there are all kinds of ways to present a poster. There are some people who say, because most people probably glance at a poster for less than a minute, so your poster should put your title in the middle with a gigantic font so people can see it. And then you put the rest of them on the side with more words. And that's where you did the elevator pitch, and then you try to make your video to Read more in more detail. But there are some people that's better with to plan poster. But unfortunately, that's not the majority. It's not a major trend. So I have seen people doing that, but it's not very popular. So I think it's still safe to use the traditional poster, especially when you are presenting to some audience you are unfamiliar with. Okay, listen, it's just for you to practice your So hold on, maybe we should, I'm going to just call people now since I, so alphabetically, Anton, C2A, can you start first?
+
+42:59 - Anton J. Rasmussen
+Yeah, you want me to start? What do you, present my poster?
+
+43:04 - Hong Qin
+Yeah, yeah, yeah. Yeah, no. Yeah, as quickly as you can. Elevator pitch, one or two minutes.
+
+43:12 - Anton J. Rasmussen
+Yeah, no problem at all. I have it up here. I just have to, I requested to share because I can't share my screen.
+
+43:19 - Hong Qin
+Oh, I'm sorry. I'm sorry. Let me, let me. Yeah, no problem. Yeah. Yeah. Can you, can you share?
+
+43:30 - Unidentified Speaker
+All right.
+
+43:31 - Anton J. Rasmussen
+No problem at all. Let's see here.
+
+43:38 - Hong Qin
+Am I recording? I'm recording. So I can share this after the class. You can look at your own presentation. Hopefully, you see some places where you want to improve.
+
+43:52 - Anton J. Rasmussen
+OK. Can you see my screen, or do I need to? Let me try that again.
+
+43:59 - Unidentified Speaker
+Yes, I see. Yeah, I see. By the way, this is the presenter's mode. Oh yeah, I can do, I can do that. Okay. Is that better? Yeah.
+
+44:12 - Anton J. Rasmussen
+Okay. So, um, what I'm looking at is actually an idea that, um, that we talked about in your lab, um, about this. The concept is we have, um, mobile devices that are collecting.
+
+44:26 - Anton J. Rasmussen
+Uh, okay.
+
+44:27 - Hong Qin
+And, uh, uh, hold on. And, uh, can I start with, you are talking to some strangers, not me. Sure, OK, good point.
+
+44:36 - Anton J. Rasmussen
+So essentially what I what I want to do is I've been collecting these devices for my personal health care. It would be really cool if we created a world where we actually had more open source devices. They were able to collect data and we could run language models on those devices and learn from each other. So imagine like a network of devices that has what we call like federated learning. So this idea is I want to create these, what we would call edge deployment of these LLMs. For this, I broke it into three phases. Currently, the only phase I'm actually completed with is phase one, which is the foundations. So what this involved was deploying an LLM on Vertex gAI to try to train it via an endpoint. And so this was just a, like a toy experiment to see that we can actually do this in Vertex. Again, so we might want to take a step back if there's questions about the problem and the challenge. Professor, should I get into that, the actual problem challenge that we're trying to face here, or just the tech and what I'm trying to do?
+
+45:52 - Hong Qin
+It depends. I mean, if the person is so interested, I guess you can go into detail.
+
+45:57 - Anton J. Rasmussen
+Sure, OK.
+
+45:57 - Hong Qin
+I mean, I certainly think, yeah, sure, go ahead.
+
+46:01 - Anton J. Rasmussen
+Yeah, I think one interesting point here is kind of security and the idea of all this healthcare data is very personal. And so of course we have like HIPAA laws, we have really restrictions on what can be shared. And so that makes using gAI in the healthcare space kind of sensitive. So one solution that could be to bring the gAI closer to where the device is versus sending this data, you know, to a company or having them collect the data. And so this is, again, kind of around keeping that sensitive information more private and limiting what we're actually putting in the cloud. So the idea here is if we can train a model in this environment and then deploy it onto a device, we can do a lot of the actual work with the sensitive data on the device. And if we have multiple devices, maybe we can share information across devices. That's already been, essentially the private information has been taken out of it. We're just getting the weights and things like that. So the second step and the first step is to kind of see if we can deploy a model. We did that, that's the foundations. Second step is making the model smaller. So this is what they're calling quantization. And so there's essentially the idea that, you know, in order to, if we're looking about like small device, we don't have a lot of space or a lot of processing power to run these large models. So if we can make the model more specific to the kind of data that's going to be collected on that device, we can quantize it, we can make it smaller, compress it, and that's what the next step is. I haven't done this part yet. This is the part that's kind of the phase two. I've started it, but that's the idea. And then the output of that is then going to be something a model that we can run locally. And so for Vertex gAI, I was trying to just use CPU instead of GPU. We'll have to see how that goes. I think that's going to be obviously some limitation is what is our processing power. Future direction here, again, big picture is imagine this world where everybody has devices that they're using, blood pressure monitors, glucose. Whether it's CGM, continuous glucose monitor, different devices like that, maybe blood tests. All this information is coming together and is essentially a network and is learning about that data that it's receiving. And it's basically perhaps sharing that data with the other to provide more information about the patient's health, obviously for the goal of increasing patient outcome. So, yep, this is the idea. There's a couple of references here that center around these simple models. The LAMA paper, which I'm going to be presenting, is about using open source data, which is, again, toward that idea of having it be more transparent. And then there's this idea of quantizing, compressing the model. And so these are basically the papers for this process.
+
+49:19 - Hong Qin
+OK, Anton, if the person just have a few seconds in front of the poster, do you have one or two sentences?
+
+49:33 - Anton J. Rasmussen
+Yeah, so I would say we're in a world now where we have great technology that can collect really useful information through devices that we can at home. This gives us power as patients to be able to not have to go to all these different places to get data and testing done. And we don't have to worry about that data being shared or stored at those places. We can keep that data locally for us. So we're empowered as people to maintain our health, understand our health, and not have to give up the data that is used to collect that information about our health.
+
+50:14 - Hong Qin
+Okay. But I think you talk too much about your importance. You didn't actually say what you are trying to do. Okay. Yeah. If the person just pass by or something, you actually need to... I guess it's important to say what you are doing is important, but you also want to say what actually you want to do.
+
+50:39 - Anton J. Rasmussen
+Yeah, I mean, essentially, the learning part is... Yeah, yeah, for sure. Thank you. Any other questions?
+
+50:48 - Hong Qin
+Okay. Yes. Other students, some suggestions for Anton?
+
+50:56 - Anton J. Rasmussen
+Yeah, happy to get feedback for sure. I'm more than willing to print out things for this.
+
+51:09 - Hong Qin
+Yeah. OK, so you can contact Anton after the class, I guess. So A, oh, there's another A Aditya, can you do a quick run of your poster?
+
+51:26 - Aditya C. Doppalapudi
+Yeah, sure, professor. Is it visible? Should I make it a slideshow or something?
+
+51:38 - Unidentified Speaker
+Not yet.
+
+51:39 - Hong Qin
+Okay, now it's visible. Yes, yeah. Visible now. Yeah. Very good.
+
+51:44 - Aditya C. Doppalapudi
+Yeah, it's a complete full screen right now. Can you.
+
+51:49 - Hong Qin
+Yes, this is much better now. Yeah. So, yeah. Yeah, go ahead.
+
+51:53 - Aditya C. Doppalapudi
+Hi. Basically, you're talking to a stranger.
+
+51:56 - Unidentified Speaker
+Okay, sorry.
+
+51:57 - Aditya C. Doppalapudi
+Yeah, basically, me and my teammate Evan worked on an idea that was already there in a paper but we tried to improve upon it. Basically creating an gAI code assistant to help generate secure code. In the current environment where gAI models are plenty, people use gAI models to generate small code snippets or try to design their own code using gAI. But most of the code that is generated by gAI has a lot of vulnerabilities. That's what paper that we took inspiration from that is done by Jan and others that has been referenced on the paper, tried to tackle, they tried to build a secure code pipeline where they use a single model for multiple, what do you say, multiple roles such as generating vulnerabilities or looking at the code and using the model to explain what is wrong with the code and use that explanation or the vulnerabilities that have been generated to improve upon that code. Basically, in the paper, they tried to replicate through eight different models using two different methods, and two of the methods that they used were proactive vulnerability prevention using self-generated ints and post-talk vulnerability repair after getting feedback on the code that has already been there, the vulnerable code that has already been generated. So we tried to, what do you say, integrate both of those methods into a single pipeline rather than two different methods to try and improve upon the code that has been generated by the model based on a single prompt through multiple different backup or testings. Using static analysis, using GitHub's code QL, or by using the model to generate feedback. Basically, we were able to implement most of the basic framework that is creating a pipeline with hint generation using the same model, being able to generate the secure code using the hints generated by the model and also able to provide a static analysis using code QL and use that analysis to fix the code. For now, we were able to implement both of these methods separately. I worked on the proactive vulnerability prevention, whereas Evan worked on the post-hoc vulnerability repair using feedback. Our next step is to integrate both of these. Right now, we are using Vertex gAI to be able to run the models that are available on Model Garden. And we have been successful so far. What we are left to do is the evaluations and the integration of both graphs of the project.
+
+55:31 - Unidentified Speaker
+Evan, how are going to present this post? Aditya, will you be the only one? Or Evan, are you also going to be there?
+
+55:46 - Evan H. Mulloy
+So I'm not planning on going. I'm kind of, I'm a distanced learner. I'm kind of far from Norfolk.
+
+55:53 - Hong Qin
+Yeah, that's fine. But do you also want to go over this quickly? So at least, Aditya, you want to also practice, go over this quickly, give a better pitch?
+
+56:09 - Evan H. Mulloy
+Professor, are you asking me to go over this?
+
+56:12 - Hong Qin
+Yes. Yes. Yeah. OK. OK.
+
+56:15 - Evan H. Mulloy
+All right. Yanadol's paper, basically, I'm going to be quick. So they have two techniques to try to make an LLM produce code that's not full of vulnerabilities. One is to ask an LLM to give a prompt to an LLM and then ask it to come up with a list of CWEs, common weakness enumerations, that would apply to the coding problem and then take these hints, as they're called, combine it with the original coding question and then send that to an LLM to have it generate secure code with those hints in mind with the idea that that having the prompt and the hints would make the LLM go oh okay I need to be mindful of these possible vulnerabilities that could be in this coding problem so let me make sure I generate the code keeping these potential vulnerabilities in mind so I don't have these vulnerabilities in the code. So that's the pro method that Aditya is doing. What I do is I do the post-hoc vulnerability repair where the input is not going to be the prompt. The input is going to be code. A static analysis tool such as CodeQL is going to be run and then it's going to generate some output. That output from the static analysis tool is going to be given to an LLM to have it generate a list of explanations of that static analysis and that's what was in the top right screenshot of the explained feedback that explains basically the different vulnerabilities encountered and yada yada. Then what it does is it takes that feedback and the original code and then hands it to the LLM and goes here's this broken code here's this feedback from doing static analysis, I want you to go fix the code using the knowledge of what we've identified, and then it goes and produces secure code. So that's what the original paper did, by Annandale did, and they tested those methods separately. But to spice things up, what we're going to do is we're going to take the output of the proactive generation with hints, and we're going to take the code that's output from there and then put it into the post-talker pair with the hopes that anything that wasn't caught in the proactive method is going to be fixed in the post-talk method. So Aditya, please zoom in on the bottom left if you can. I want you to zoom in on the bottom left diagram that you have there. Zoom in. Zoom in way, way, because this is how, okay, so we start on the top left that's the vanilla prompt for code right okay the vanilla prompt for code that could be something like I don't know make a base Python program that connects to a database or whatever okay so pretend that we go to the green LLM you ask it hey what kind of vulnerabilities could be in this in this kind of coding problem to go and connect to a database and you know let's see oh well there's CWE blah blah which is SQL injection blah blah and here's another CWE blah, blah, blah. We take that, we go to the yellow LLM. Hey, here's a prompt to connect to a database. Here's a bunch of potential vulnerabilities. Why don't you carefully code this Python program to avoid having those vulnerabilities, the vulnerability hints, to avoid having those vulnerabilities. And so, okay, I'm going to go and make this code being mindful of a potential SQL injection vulnerability that could be present in a Python coding problem to make a, to make a, you know, connect to a database, blah, blah, blah. So the output's this code, right, on the right. Then it goes down to the blue thing on the bottom, the static analysis tool, the magnifying glass. So it's gonna, it's gonna take a look at that, and it's gonna see if there are any vulnerabilities in that output. And if there's no vulnerabilities, then we're good to go, we return the code, we're all good. But if there are vulnerabilities, what we do is, is, is we put that into the blue LLM, do explained feedback. Here's the original code. And then here's the static analysis. What's wrong with this? What's wrong with this code? Generate explained feedback. And then it goes and produces a bunch of explanations. We take those explanations, we take the original code, we put that to the red LLM, and then boom, repaired code. Any questions?
+
+1:01:06 - Hong Qin
+Questions or comments? I think you need to practice how to project your thing, what you want to do, what's the key. Instead of saying the people, all those things, you want to start with what you want to do.
+
+1:01:32 - Aditya C. Doppalapudi
+Yeah, I would say that. Need to prepare a lot more. Yeah.
+
+1:01:42 - Hong Qin
+Today's show. Yeah. Yeah. You can stop sharing. So A, B, B, Brian, are you ready? Hey, Brian, right there. Okay, if Brian is not there, let's... Oh, Professor. Oh, you are there? Okay. Are you ready to go with the poster quickly?
+
+1:02:25 - Brian Llinas Marimon
+Yes, Professor.
+
+1:02:27 - Hong Qin
+Sure, yeah.
+
+1:02:31 - Brian Llinas Marimon
+game. Sergio is going to share the screen.
+
+1:02:44 - Hong Qin
+Oh, you also have two people. Okay, very good. Yeah, nice.
+
+1:02:50 - Brian Llinas Marimon
+Yes.
+
+1:02:53 - Brian Llinas Marimon
+So basically, for our project, the idea is to test this different LLMs to assess how they are accurate for event extraction with the accurate date. So here, what we want to achieve is how LLMs are good to enhance the understanding of digital news collections for event seed extraction. Using LLMs. So we have different four data sets where we manually create from the web, and we pick four countries that are part from the Southeast of Africa. So the reason that we pick those countries is because we don't have enough information. Know anything related to those countries so we can see how much we can learn from that those countries to see what's going on if they are like facing some political events or climate change events etc. So the idea is to assess the behavior of different LLMs for different contexts. So right now Now we did a proof-of-concept using zero-shot and chain-of-thought prompting for GPT-40mini. And so far, we tested to first generate a summary of the news article based on the event. And second, we assessed the accuracy of the event's extraction for that particular news article and validate manually if the date for that event was correct or not. So then for future work is to use Vertex gAI to test different LLMs capabilities for the same task, compare which one performs better into this task, And then finally, to assess from those events that we identify which one we could use for query in search engines to enhance the collection of news articles.
+
+1:05:41 - Hong Qin
+OK, thanks. So now that we have done that, can you also do a quick run? How are you two going to coordinate this?
+
+1:05:55 - Brian Llinas Marimon
+What do you mean exactly, Professor?
+
+1:05:57 - Hong Qin
+Well, when will you be there? Of you stand in front of the poster, how are you going to coordinate talking to people, I guess, separately?
+
+1:06:13 - Brian Llinas Marimon
+No, so we haven't talked about it, to be honest. So that maybe one round will be me, the other one will be Sergio. Or if people come up in different span times, maybe we are going to split to do it by groups. But to be honest, we haven't discussed how we are going to coordinate.
+
+1:06:35 - Hong Qin
+Yes. Can you also just do a quick elevator pitch on this and emphasize what you want to do Sorry, could you repeat again? Can you do a quick elevator pitch?
+
+1:07:06 - Brian Llinas Marimon
+That is what I did.
+
+1:07:07 - Hong Qin
+Oh, you mean for this for this poster. Can you? Oh, that's what you just did. Yes. Yes. Oh, I saw the branded.
+
+1:07:19 - Brian Llinas Marimon
+Oh, yeah, it was me. It was me. So I think that you're referring to Sergio, right?
+
+1:07:23 - Hong Qin
+Yeah, yeah. Oh, yeah. Yeah. I'm really confused. Sergio. Are you there? Oh. Oh, he want to have a couple of minutes to prepare. That's fine. Okay. Sorry. Yeah. All right. So let's go to the, so A, B, there's no C, E, F, G, H, I, J. Hey, okay, Kris, that's yours. Okay, sorry, Kris, are you ready?
+
+1:08:07 - Kris Seekford
+Yeah, just give me a second to pull it off.
+
+1:08:12 - Hong Qin
+Let's see here. Who is sharing the screen? Can you stop?
+
+1:08:19 - Kris Seekford
+I believe you guys can see my screen now.
+
+1:08:24 - Hong Qin
+Yeah, so Kris is sharing the screen. All right, very good.
+
+1:08:30 - Kris Seekford
+I'm trying to get, okay. So basically, right, and quantum computing is going to be like the next big thing, or so people say. It offers tremendous power that we don't have currently, and ultimately would take less resources to compute the same thing, then thus you can create more computing power. One of the Obviously, they would want to do gAI with quantum computers, but one of the drawbacks is that you can't measure a qubit without collapsing it to zero or one by nature. Qubits are usually, they call a superposition state where they're part zero, part one, and that gives really insightful information that's unique to quantum computers. They want to be able to keep that. But if you collapse to zero one for measurement, then obviously it loses that state and then you can't go back. So they try to get around this. And they did, who was it? There's a no-cloning theorem first introduced like in 1982 by Wooters and Zurek that says do the nature of qubits and and unique superposition states, you can't actually clone a qubit. But they found that you can do approximate cloning methods. However, you can only get it 75 to 85% similar to the original. That's a problem because, again, gAI is built on measurements, and that, which doesn't seem like a lot, 25% ends up adding up and can be the difference between a great gAI model and a terrible gAI model. So basically, they haven't found a way to actually measure it without collapsing into state or into zeros or ones, and then still preserving the actual superposition state where all the information was. So my work proposes to use a denoise and diffusion model as a quantum classical hybrid framework. And basically, so you wouldn't bypass the approximate clone step where it's giving you around 83%. You instead, you would clone it like you normally would, that produces two clones. And then you would feed the clone into that diffusion model. And the diffusion model would get it from theoretically 83% to like a 99% fidelity. So currently I already did like theoretical framework, initial brainstorming, research similar methods to ensure originality, which there hasn't been a method yet. I outlined the project workflow. I began the coding of the simple model. So first I'm just doing a really simple model where I'm using simulated density matrices to represent qubits in superposition state and create synthetic clones using depolarization and amplitude dampening channels, and then train like a classical denoiser. So I'm just actually using an MLP. And I actually just completed a first iteration and it was giving an average of 92% fidelity, which is, you know, pretty impressive going from an average of 83% similarity to 92% is huge. So then next from Google Colab from the simple model over to Vertex gAI on a Google Workbench cloud instance. And I'll use the actual cloning technique that will be used on regular qubits, but still simulate the density matrices to represent the qubits in the superposition state, train the models, then repeat that process, but then actually train a classical diffusion model and measure the results. And then I hope I'll be able to eventually get my hands on some Google quantum gAI technology and run it on real quantum hardware and see how that transitions over. But overall, this should. It seems very promising and success could enable more reliable quantum state measurements for quantum gAI computation while leaving the original state intact, and that's key. Thank you.
+
+1:13:29 - Hong Qin
+I think you need to practice how to get everything done in two or three sentences. Much longer time, which is fine. I mean, you do have a longer version, but you need to prepare for a shorter version. Just try explain everything in two or three sentences.
+
+1:13:56 - Kris Seekford
+I'd just try real quick, like just off the top of my head, like something.
+
+1:13:59 - Hong Qin
+Yeah, sure.
+
+1:14:03 - Kris Seekford
+Quantum computing is going to be the future, but they can't use quantum gAI because the lack of being able to measure a quantum state They currently have approximate cloning techniques to try to make a clone. So then you can replicate that and take a measurement, but it's limited to 83%. I propose a denoising diffusion model, classical quantum hybrid approach that already shows promise at 92%. Okay.
+
+1:14:31 - Hong Qin
+I guess that's certainly got which But make the key idea more clear. Yeah. Okay, very good. Sorry, I just realized that I missed the G. G is the, wait, wait, I saw this, there's a person that with a name G. Gaffy, Gaffy. It looked like he dropped off. Yeah, okay, it does look like Gaffy dropped off.
+
+1:15:03 - Sergio Pallas Enguita
+Professor, I can do the pitch now, if you want.
+
+1:15:08 - Hong Qin
+Oh, so do you. Okay, sure, yeah, you go ahead, yeah.
+
+1:15:10 - Sergio Pallas Enguita
+I don't know why PowerPoint grabbed the microphone, so Zoom, like it wouldn't work with Zoom for some reason.
+
+1:15:17 - Hong Qin
+Sure, yeah, yeah, that's fine, yeah.
+
+1:15:19 - Sergio Pallas Enguita
+Sorry. I'm going to do it like that, just so the microphone doesn't cut off again.
+
+1:15:36 - Hong Qin
+Okay, yeah, go ahead.
+
+1:15:38 - Sergio Pallas Enguita
+So basically our problem is that the event extraction right now is done manually by humans and that just takes a lot of time and it bottlenecks the way that we can analyze events in the world right now. So what we want to use is through Vertex gAI test how LLMs can be used for event extraction from this news to kind of understand and events that are happening somewhere else within the spatial and time context that those news also have. And we have data set for four different countries to do that.
+
+1:16:23 - Hong Qin
+Okay, that's seemed to be a very succinct and clear. Okay, good. So you spent a few minutes and prepared really well. Okay. Who is the next? Sorry, I already lost the order. Okay, I think. Can you do next?
+
+1:16:50 - Nishan Khatri
+Yes, yours.
+
+1:16:51 - Unidentified Speaker
+Yeah. Thank you, sir.
+
+1:16:57 - Nishan Khatri
+Just seeing my screen is just loading. Moment. Okay.
+
+1:17:02 - Hong Qin
+Yeah. Okay.
+
+1:17:03 - Unidentified Speaker
+Can I start?
+
+1:17:05 - Hong Qin
+Yes, please. Hi.
+
+1:17:07 - Nishan Khatri
+So, our project is based on the large foundational models. So, large foundational models are pretty hard these days. People are using for various tasks and in various domains. So, in our project, we are focusing on biology domain. So, we are using a large foundational model trained on a large amount of genomics data. So, our goal is to use those pre-trained models for a specific task called variant effect. The variant effect is a biology problem where we want to see what happens if there is certain change or mutation in a genomic sequence. For example, if you see this table, like the sequence, the one of the alphabet or which is called basis in biology is changed from A to C. So we just want to use the power of large foundational models, especially trained on biology data to see the effect of these changes. So what happens if these changes, whether it's harmful or harmless. So we want to see the effect of the changes. That's all.
+
+1:18:13 - Hong Qin
+Terry, do you want, how is Nishan and you going to coordinate on this?
+
+1:18:21 - Terry R. Stilwell
+Right, yeah. Yeah, we haven't talked about that. Nishan, I think we can both be there.
+
+1:18:28 - Nishan Khatri
+Yeah, we can both be there and do drone-wise. If there are many people coming, some of us can present at one time and one can present at another time. We can do something like that.
+
+1:18:40 - Hong Qin
+Okay, Terry, can you also do a quick lighting talk or elevator pitch on this? Sure.
+
+1:18:46 - Terry R. Stilwell
+Yeah, so Nishan and I are studying how small changes in DNA called a variant can affect human health. And sometimes these changes can be, they can cause disease and then other times they may not, so it's hard to tell. So to help with this, we're leveraging gAI models on GCP or Google Cloud that learn to Read DNA like language. So just like language models that learn grammar and What else? Context from language. These genomic models learn patterns from DNA. Two models that we've looked at are DNA BERT and Nucleotide Transformer to see how well they can perform in this task, which is variant effect prediction. We are looking at how they perform out of the box, so zero shot. Then we're also hoping to expand on adapting that to more efficient methods for fine tuning. And so, okay, yeah, I think that's it.
+
+1:20:06 - Hong Qin
+By the way, what dataset are you using?
+
+1:20:09 - Terry R. Stilwell
+It's the ClinVar dataset.
+
+1:20:12 - Hong Qin
+Oh, I see. Thank you. I think I have everybody. Practiced? I think I have everyone. Yeah, so Terry, Nishan, Anton, Evan, Nishan, Aditya, Brian, Kris. Yeah, except Gaffy who just dropped off. Okay. Okay, so thanks everyone for practicing that. So I'm I'm going to stop the recording. So the rest of the class, I'm going to set up a breakout room. If you'd like to talk to your teammates, like coordinate how do you presentation or talk about projects, fine. So I'm good. OK. We're in that breakout. So I'm OK. Yeah. Final breakout room. So I'm going to start with, again, Tim, because we can't join any room we like, Yes, Evan.
+
+1:21:25 - Evan H. Mulloy
+Was someone presenting a paper tonight?
+
+1:21:31 - Hong Qin
+No, that has been postponed, apparently because of the post on another issue. I don't know. Is there anyone want to present a paper?
+
+1:21:46 - Anton J. Rasmussen
+Yeah, I going to present and I sent out a thing today saying I, I'm not going to be able to this week. So it should be in the coming weeks.
+
+1:21:58 - Evan H. Mulloy
+Oh, okay. Thanks.
+
+1:21:59 - Anton J. Rasmussen
+Yep. Sorry for the confusion, Evan.
+
+1:22:03 - Hong Qin
+That's fine. So yeah, I have a break. If your team is on the right track, you don't need to meet, that's fine. But if you want to meet the team, you can meet in the breakout room to discuss the poster or other things if you like, Hey, Aman, do you want to join which room now? Bye. Uh... Hey, man, are you there? Can you join room nine?
+
+1:23:30 - Kris Seekford
+Hey, Professor, which room am I supposed to join? I'm sorry.
+
+1:23:33 - Hong Qin
+Oh, you are the only one person. You work on your own, I guess. Yeah. Okay.
+
+1:23:42 - Unidentified Speaker
+Yeah.
+
+1:23:43 - Hong Qin
+That's fine. I mean, you don't have to join any room. You can join other people's room to see whether you can be helpful, I guess. I mean, you are free to leave. All right. Thank you very much. John, thank you.
+
+1:27:35 - Unidentified Speaker
+Hello.
+
+1:27:55 - Hong Qin
+Oh, hey, I mean, are you there?
+
+1:27:58 - Unidentified Speaker
+Yes.
+
+1:27:59 - Unidentified Speaker
+Yeah.
+
+1:28:00 - Aman Al Amin
+I don't know. You couldn't hear me. I don't know why, but I went into the breakout room number nine, then I realized that you are not there.
+
+1:28:09 - Hong Qin
+So I guess I saw your made a lot of modification to the slides. Let's do a practice on tomorrow. It doesn't look like animation.
+
+1:28:36 - Hong Qin
+Yeah, animation.
+
+1:28:37 - Aman Al Amin
+I did it last last time. What I did this week is like I added, like the color boxes like green.
+
+1:28:45 - Hong Qin
+Yes, I see a lot. Yeah.
+
+1:28:47 - Aman Al Amin
+Those green and red actually means like green means that whenever it happens, like in test and train population, when there is a difference, then we have a lot of difference in the lower down heat map. But sometimes we do see. OK, so I can give an overview of that.
+
+1:29:14 - Unidentified Speaker
+Let's just see.
+
+1:29:18 - Hong Qin
+Yeah, let me open that.
+
+1:29:25 - Unidentified Speaker
+Okay. Yeah. Let me start over from that one.
