@@ -23,8 +23,16 @@ Instructor: Dr. Hong Qin
 Fall 2025
 
 <!--
-Introduce yourself, the course, and frame this as a research + engineering project.
-Emphasize that this work is exploratory and foundational, not a polished product.
+Hi everyone, my name is Anton Rasmussen. This presentation is for my CS795 / CS895
+Generative AI final project with Dr. Hong Qin.
+
+This project is intentionally exploratory. It is not a polished product, but rather
+a research-plus-engineering effort focused on system design decisions around deploying
+large language models in sensitive domains like healthcare.
+
+The core theme is how we move from powerful cloud-based AI systems toward smaller,
+efficient, privacy-aware models that can run closer to the data, potentially on CPUs
+or edge devices.
 -->
 
 ---
@@ -49,8 +57,18 @@ Emphasize that this work is exploratory and foundational, not a polished product
 > *Can we combine cloud-scale training with efficient, local inference for healthcare AI?*
 
 <!--
-Explain the tension between LLM capability and healthcare constraints.
-Stress that privacy and deployment feasibility are the core drivers.
+Large Language Models are extremely capable, but they come with high computational
+and financial costs. Most modern LLM deployments assume centralized cloud inference,
+persistent connectivity, and GPU availability.
+
+Healthcare data breaks that assumption. It is highly sensitive, regulated, and often
+generated continuously by personal devices like wearables or home monitors.
+
+If inference happens only in the cloud, we introduce privacy risk, latency, dependency
+on external infrastructure, and limited personalization.
+
+This leads to the core question driving the project: can we combine the strengths of
+cloud-scale training with local, efficient inference?
 -->
 
 ---
@@ -71,8 +89,14 @@ Stress that privacy and deployment feasibility are the core drivers.
 This project explores the **foundations** needed to make that possible.
 
 <!--
-Make it clear this is a systems-level vision, not just a single experiment.
-Mention that later phases build on these foundations.
+The vision is a hybrid cloud–edge architecture.
+
+The cloud is used for what it does best: training, orchestration, versioning, and
+evaluation. The edge is used for low-latency inference, privacy preservation, and
+personalization.
+
+In this model, patient data stays local. Only model updates or aggregated information
+move upstream. This also opens the door to federated learning in future work.
 -->
 
 ---
@@ -86,8 +110,14 @@ This project investigates a hybrid cloud–edge framework for deploying Large La
 Through a sequence of experiments—including Vertex AI model deployment, dynamic quantization, and a federated learning prototype—this work evaluates the feasibility, limitations, and future potential of edge-ready LLMs for personalized healthcare applications.
 
 <!--
-Read this more slowly.
-This slide satisfies the formal “abstract” requirement.
+Read this slide slowly.
+
+This abstract satisfies the formal course requirement. The key ideas are the use of
+Vertex AI as a cloud orchestration layer, the exploration of post-training compression,
+and the evaluation of CPU-based local inference.
+
+Importantly, the work includes limitations and negative results, which is intentional
+for an exploratory research project.
 -->
 
 ---
@@ -112,8 +142,14 @@ This slide satisfies the formal “abstract” requirement.
 This course project focuses primarily on **Phases I and II**.
 
 <!--
-Explain that Phase III is forward-looking and intentionally incomplete.
-This shows research maturity rather than scope creep.
+The project is intentionally structured in phases.
+
+Phase I focuses on validating cloud infrastructure and deployment workflows.
+Phase II focuses on model compression for edge inference.
+Phase III is forward-looking work around federated and decentralized learning.
+
+For this course, the deliverables are Phases I and II. Phase III is intentionally framed
+as future research rather than unfinished work.
 -->
 
 ---
@@ -136,8 +172,12 @@ Establish an **end-to-end cloud workflow** for training, registering, and deploy
 - Scales to future LLM workloads
 
 <!--
-Tie this explicitly to real-world MLOps practices.
-Mention that this was necessary before touching LLMs.
+Before working with LLMs or edge inference, I needed to validate that I understood
+real-world MLOps workflows.
+
+Vertex AI provides managed infrastructure, model registry support, versioned
+deployments, and both batch and online inference capabilities. This phase is about
+correctness and reproducibility, not model complexity.
 -->
 
 ---
@@ -161,7 +201,11 @@ Mention that this was necessary before touching LLMs.
 > This validated the **cloud-side foundation** needed for later LLM experimentation.
 
 <!--
-Emphasize correctness and reproducibility over model complexity.
+The model itself is intentionally simple. The goal is not predictive performance,
+but verifying that the deployment pipeline works end-to-end.
+
+This surfaced issues around serialization, environment alignment, and permissions,
+which are all common real-world MLOps challenges.
 -->
 
 ---
@@ -186,8 +230,10 @@ Emphasize correctness and reproducibility over model complexity.
 - Version alignment is critical
 
 <!--
-This is a strong reflection slide.
-Explicitly say that these failures informed later design decisions.
+This slide reflects real-world experience. Many issues had nothing to do with model
+logic and everything to do with environment and tooling.
+
+These lessons directly influenced how Phase II experiments were designed and executed.
 -->
 
 ---
@@ -214,7 +260,10 @@ LLMs are:
 - Efficient runtimes (e.g., `llama.cpp`)
 
 <!--
-Position compression as a necessity, not an optimization.
+Compression is not an optimization here, it is a requirement.
+
+If edge inference is the goal, then model size, memory footprint, and CPU performance
+become first-class constraints.
 -->
 
 ---
@@ -238,7 +287,11 @@ Position compression as a necessity, not an optimization.
 - GGUF export pipeline (planned)
 
 <!--
-Briefly mention library instability as a real-world constraint.
+Post-training quantization was chosen first because it avoids retraining and allows
+rapid experimentation.
+
+A major constraint encountered here was library instability and compatibility issues,
+which is itself an important practical finding.
 -->
 
 ---
@@ -262,7 +315,8 @@ Briefly mention library instability as a real-world constraint.
 - Compare performance
 
 <!--
-Stress methodological consistency here.
+The experiment was designed to be methodologically consistent: same prompt, same token
+count, same environment, with only quantization changed.
 -->
 
 ---
@@ -284,7 +338,9 @@ Stress methodological consistency here.
 
 <!--
 Pause here.
-Explicitly state that negative results are still results.
+
+This is a negative result. Dynamic quantization slightly increased model size and
+worsened latency. This is an important finding rather than a failure.
 -->
 
 ---
@@ -308,7 +364,10 @@ Explicitly state that negative results are still results.
 - Guides future optimization choices
 
 <!--
-This slide demonstrates research judgment.
+Negative results are still results. This establishes a baseline and prevents false
+assumptions about compression benefits.
+
+It also validates that the benchmarking pipeline itself is correct.
 -->
 
 ---
@@ -332,7 +391,8 @@ Healthcare data is:
 Use **federated averaging (FedAvg)** to combine model updates without sharing raw data.
 
 <!--
-Tie this back to healthcare privacy requirements.
+Federated learning aligns naturally with healthcare privacy constraints by allowing
+learning across devices without centralizing sensitive data.
 -->
 
 ---
@@ -359,7 +419,10 @@ Global update:
 ```
 
 <!--
-Emphasize that this is a correctness check, not performance evaluation.
+This is a correctness check rather than a performance evaluation.
+
+The goal is to verify that aggregation logic works before integrating it with real
+models or training loops.
 -->
 
 ---
@@ -374,7 +437,9 @@ Emphasize that this is a correctness check, not performance evaluation.
 - Supports future personalization
 
 <!--
-Position this as a conceptual bridge to future work.
+FedAvg serves as a conceptual bridge between compressed models and decentralized learning.
+
+It supports personalization while preserving privacy.
 -->
 
 ---
@@ -391,7 +456,9 @@ Position this as a conceptual bridge to future work.
 - FedAvg aggregation code
 
 <!--
-If recording, narrate what *would* be shown live.
+For a recorded presentation, narrate what would be shown live.
+
+This slide exists to demonstrate practical grounding.
 -->
 
 ---
@@ -416,7 +483,9 @@ If recording, narrate what *would* be shown live.
 - Meaningful speedups on small models
 
 <!--
-This slide scores highly for honesty and reflection.
+This slide emphasizes honest reflection.
+
+Limitations are framed as informative constraints rather than failures.
 -->
 
 ---
@@ -441,7 +510,9 @@ This slide scores highly for honesty and reflection.
 - Personalized health inference
 
 <!--
-Clearly distinguish between engineering and research extensions.
+Technical and research extensions are clearly separated.
+
+This naturally extends toward PhD-level research.
 -->
 
 ---
@@ -456,7 +527,9 @@ Clearly distinguish between engineering and research extensions.
 - Improves trust & transparency
 
 <!--
-Connect back to motivation from the start.
+This slide reconnects the project back to its original healthcare motivation.
+
+The value is not just technical performance, but trust, privacy, and patient empowerment.
 -->
 
 ---
@@ -471,7 +544,7 @@ Connect back to motivation from the start.
 - Google Vertex AI resources
 
 <!--
-Keep this short and professional.
+Keep acknowledgments concise and professional.
 -->
 
 ---
@@ -483,5 +556,5 @@ Keep this short and professional.
 Thank you — I welcome questions and feedback.
 
 <!--
-End confidently.
+End confidently and invite discussion.
 -->
